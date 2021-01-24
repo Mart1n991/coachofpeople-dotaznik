@@ -1,15 +1,12 @@
 import {
-  Checkbox,
   FormControl,
   FormControlLabel,
   RadioGroup,
-  Radio,
   Grid,
   Select,
   Slider,
   TextField,
   FormLabel,
-  FormGroup,
 } from "@material-ui/core";
 import React from "react";
 import Headings from "./Headings";
@@ -76,6 +73,7 @@ export default function Question({
             rowsMax={rowsMax}
             type={type}
             value={value}
+            autoFocus={autoFocus}
           />
         );
     }
