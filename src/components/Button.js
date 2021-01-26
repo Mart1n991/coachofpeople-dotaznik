@@ -2,7 +2,12 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core";
 
-export default function ButtonComponent({ color, children, disabled }) {
+export default function ButtonComponent({
+  color,
+  children,
+  disabled,
+  onClick,
+}) {
   const useStyles = makeStyles({
     root: {
       margin: 10,
@@ -17,6 +22,7 @@ export default function ButtonComponent({ color, children, disabled }) {
       variant="contained"
       disabled={disabled}
       className={classes.root}
+      onClick={onClick}
     >
       {children}
     </Button>

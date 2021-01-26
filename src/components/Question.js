@@ -145,6 +145,7 @@ export default function Question({
             multiline={multiline}
             min={min}
             max={max}
+            name={name}
           />
         );
     }
