@@ -1,4 +1,9 @@
-import { createMuiTheme } from "@material-ui/core";
+import {
+  createMuiTheme,
+  makeStyles,
+  Slider,
+  withStyles,
+} from "@material-ui/core";
 
 export const theme = createMuiTheme({
   palette: {
@@ -16,4 +21,52 @@ export const theme = createMuiTheme({
   },
 });
 
-console.log(theme);
+//Custom style for slider
+export const PrettoSlider = withStyles({
+  root: {
+    color: "#db7107",
+    height: 8,
+    width: 240,
+    marginTop: 20,
+  },
+  thumb: {
+    height: 20,
+    width: 20,
+    backgroundColor: "#fff",
+    border: "2px solid currentColor",
+    marginTop: -8,
+    marginLeft: -12,
+    "&:focus, &:hover, &$active": {
+      boxShadow: "inherit",
+    },
+  },
+
+  active: {},
+  valueLabel: {
+    left: "calc(-50%)",
+  },
+
+  track: {
+    height: 8,
+    borderRadius: 4,
+  },
+  rail: {
+    height: 8,
+    borderRadius: 4,
+  },
+})(Slider);
+
+//Styling for individual elements
+export const elementsStyles = makeStyles({
+  logoSmall: {
+    width: "50%",
+  },
+
+  logoLarge: {
+    width: "20%",
+  },
+
+  container: {
+    height: "100vh",
+  },
+});

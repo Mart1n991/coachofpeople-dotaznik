@@ -4,14 +4,19 @@ import {
   RadioGroup,
   Grid,
   Select,
-  Slider,
   TextField,
   FormLabel,
+  InputLabel,
+  MenuItem,
+  makeStyles,
 } from "@material-ui/core";
 import React from "react";
 import Headings from "./Headings";
+import { uniqueKey } from "../utils/uniqueKey";
+import { PrettoSlider } from "../styles/style";
 
 export default function Question({
+  align,
   questionText,
   label,
   questionType,
@@ -19,11 +24,8 @@ export default function Question({
   control,
   autoFocus,
   color,
-  disabled,
-  margin,
   name,
   onChange,
-  placeholder,
   required,
   rows,
   rowsMax,
@@ -31,15 +33,47 @@ export default function Question({
   value,
   variant,
   arrayOfInputs,
+  marks,
+  max,
+  min,
+  step,
+  valueLabelDisplay,
+  direction,
+  xsH,
+  xsQ,
+  smH,
+  smQ,
+  mdH,
+  mdQ,
+  lgH,
+  lgQ,
+  xlH,
+  xlQ,
+  multiline,
+  mt,
+  mb,
+  sliderName,
 }) {
-  const uniqueKey = new Date().getTime;
+  const useStyles = makeStyles({
+    root: {
+      marginTop: "10px",
+      marginBottom: "10px",
+    },
+
+    rating: {
+      display: "flex",
+      alignItems: "center",
+    },
+  });
+
+  const classes = useStyles();
 
   const typeOfQuestion = () => {
     switch (questionType) {
       case "selection":
         return (
           <FormControl>
-            <FormLabel>{label}</FormLabel>
+            <FormLabel required={required}>{label}</FormLabel>
 
             <RadioGroup onChange={onChange} row={row}>
               {arrayOfInputs.map((input, index) => {
@@ -57,10 +91,44 @@ export default function Question({
         );
 
       case "select":
-        return <Select />;
+        return (
+          <FormControl>
+            <InputLabel>{label}</InputLabel>
+            <Select onChange={onChange}>
+              {/* <MenuItem value="">
+                <em>none</em>
+              </MenuItem> */}
+
+              {arrayOfInputs.map((input, index) => {
+                return (
+                  <MenuItem value={input} key={index + uniqueKey}>
+                    {input}
+                  </MenuItem>
+                );
+              })}
+            </Select>
+          </FormControl>
+        );
 
       case "slider":
-        return <Slider />;
+        return (
+          <>
+            <Headings variant="body2" color="secondary" mb={0}>
+              {sliderName}
+            </Headings>
+            <PrettoSlider
+              onChange={onChange}
+              name={name}
+              marks={marks}
+              max={max}
+              min={min}
+              color={color}
+              step={step}
+              value={value}
+              valueLabelDisplay={valueLabelDisplay}
+            />
+          </>
+        );
 
       default:
         return (
@@ -74,15 +142,47 @@ export default function Question({
             type={type}
             value={value}
             autoFocus={autoFocus}
+            multiline={multiline}
+            min={min}
+            max={max}
           />
         );
     }
   };
 
   return (
-    <Grid>
-      <Headings>{questionText}</Headings>
-      {typeOfQuestion()}
+    <Grid container justify="center" direction={direction}>
+      <Grid
+        item
+        className={classes.root}
+        xs={xsH}
+        sm={smH}
+        md={mdH}
+        lg={lgH}
+        xl={xlH}
+      >
+        <Headings
+          color={color}
+          variant="subtitle1"
+          align={align}
+          mt={mt}
+          mb={mb}
+        >
+          {questionText}
+        </Headings>
+      </Grid>
+      <Grid
+        item
+        className={classes.root}
+        xs={xsQ}
+        sm={smQ}
+        md={mdQ}
+        lg={lgQ}
+        xl={xlQ}
+        align={align}
+      >
+        {typeOfQuestion()}
+      </Grid>
     </Grid>
   );
 }
