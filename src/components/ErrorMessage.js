@@ -8,16 +8,20 @@ export default function ErrorMessage({ children, variant, align, color }) {
       backgroundColor: red[700],
       padding: "5px 10px",
       fontWeight: "bold",
-      marginBottom: "15px",
       borderRadius: "2px",
       textAlign: "center",
+    },
+
+    container: {
+      width: 250,
+      margin: " 0 auto",
     },
   });
 
   const classes = useStyles();
 
   return (
-    <Grid item align="center">
+    <Grid item className={classes.container}>
       <Typography variant={variant} align={align} color={color} className={classes.root}>
         {children}
       </Typography>

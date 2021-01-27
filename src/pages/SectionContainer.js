@@ -17,10 +17,20 @@ import ButtonComponent from "../components/Button";
 
 import { connect } from "react-redux";
 import { stepForward, stepBack } from "../Actions/buttonControl";
+import { errorHandling } from "../Actions/errorhandling";
+import { errorMessages } from "../constans/errorMessages";
 
 function SectionContainer(props) {
-  console.log(props.step);
   // Sem switchujem kroky v aplikácií na základe čísla kroku sa mi vyrenderuje daný obsah, ktorý potrebujem
+  const onButtonNext = () => {
+    const { firstName, lastName, age, gender } = props.userPersonInfo;
+    if (firstName.length < 2 || lastName.length < 2 || age.length === 0 || gender === "") {
+      return props.errorHandling(errorMessages);
+    } else {
+      return props.stepForward();
+    }
+  };
+
   const renderContent = () => {
     switch (props.step) {
       case 2:
@@ -63,7 +73,7 @@ function SectionContainer(props) {
         {props.step === TOTAL_STEPS ? (
           <ButtonComponent color="secondary">Odoslať</ButtonComponent>
         ) : (
-          <ButtonComponent color="secondary" onClick={props.stepForward}>
+          <ButtonComponent color="secondary" onClick={onButtonNext}>
             Ďalej
           </ButtonComponent>
         )}
@@ -75,6 +85,7 @@ function SectionContainer(props) {
 const mapStateToProps = (state) => {
   return {
     step: state.step.currentStep,
+    userPersonInfo: state.personalInfo.data,
   };
 };
 
@@ -82,6 +93,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     stepForward: () => dispatch(stepForward()),
     stepBack: () => dispatch(stepBack()),
+    errorHandling: (error) => dispatch(errorHandling(error)),
   };
 };
 

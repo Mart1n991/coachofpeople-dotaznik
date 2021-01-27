@@ -4,7 +4,9 @@ import { connect } from "react-redux";
 import { getInput } from "../Actions/inputChange";
 import Question from "../components/Question";
 import Section from "../components/Section";
+import ErrorMessage from "../components/ErrorMessage";
 import { sectionNames } from "../constans/sectionNames";
+import { errorMessages } from "../constans/errorMessages";
 
 function PersonalInfo(props) {
   const gender = ["Muž", "Žena"];
@@ -24,6 +26,9 @@ function PersonalInfo(props) {
         name="firstName"
         onChange={onInputChange}
       />
+
+      {props.personalInfoErrors.firstName && <ErrorMessage>{errorMessages.required}</ErrorMessage>}
+
       <Question
         label="Priezvisko"
         variant="outlined"
@@ -33,7 +38,21 @@ function PersonalInfo(props) {
         name="lastName"
         onChange={onInputChange}
       />
-      <Question label="Vek" variant="outlined" required type="number" margin={2} name="age" onChange={onInputChange} />
+
+      {props.personalInfoErrors.lastName && <ErrorMessage>{errorMessages.required}</ErrorMessage>}
+      <Question
+        label="Vek"
+        variant="outlined"
+        required
+        type="number"
+        margin={2}
+        name="age"
+        onChange={onInputChange}
+        min={0}
+      />
+
+      {props.personalInfoErrors.age && <ErrorMessage>{errorMessages.positiveNumber}</ErrorMessage>}
+
       <Question
         label="Pohlavie"
         arrayOfInputs={gender}
@@ -45,9 +64,17 @@ function PersonalInfo(props) {
         onChange={onInputChange}
         name="gender"
       />
+      {props.personalInfoErrors.gender && <ErrorMessage>{errorMessages.required}</ErrorMessage>}
     </Section>
   );
 }
+
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    personalInfoErrors: state.personalInfo.errors,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -55,4 +82,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(PersonalInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(PersonalInfo);

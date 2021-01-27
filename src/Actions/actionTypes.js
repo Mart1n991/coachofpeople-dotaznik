@@ -7,6 +7,8 @@ const actionTypes = {
 
   STEP_FORWARD: "STEP_FORWARD",
   STEP_BACK: "STEP_BACK",
+
+  ERROR_HANDLING: "ERROR_HANDLING",
 };
 
 export default actionTypes;
