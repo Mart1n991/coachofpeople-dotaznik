@@ -1,26 +1,21 @@
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import { CssBaseline } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/core/styles";
-import SectionContainer from "./pages/SectionContainer";
 
 import { theme } from "./styles/style";
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from "react-router-dom";
+import SectionContainer from "./pages/SectionContainer";
 import AdminEntry from "./pages/AdminSection/AdminEntry";
 import Entry from "./pages/Entry";
+import { connect } from "react-redux";
 
-function App() {
-  const emailVerification = null;
+function App(props) {
   /*
   Presmerovanie s "/questionnaire" späť na validáciu emailu v prípade ak fetchEmailData.show sa nerovná true. Chcem tak zabrániť tomu, že ak sa 
   niekto pokúsi pristúpiť na cestu "/questionnaire" manuálne, tak ho presmeruje späť.
   */
   const questionnaireRedirect = () => {
-    if (emailVerification !== true) {
+    if (props.verified !== true) {
       return <Redirect to="/" />;
     }
 
@@ -33,7 +28,7 @@ function App() {
         <CssBaseline />
         <Switch>
           <Route exact path="/">
-            {emailVerification ? <Redirect to="questionnaire" /> : <Entry />}
+            {props.verified ? <Redirect to="questionnaire" /> : <Entry />}
           </Route>
 
           <Route exact path="/admin">
@@ -49,4 +44,10 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    verified: state.verification.emailVerification,
+  };
+};
+
+export default connect(mapStateToProps)(App);

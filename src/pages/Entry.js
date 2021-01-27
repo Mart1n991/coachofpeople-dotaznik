@@ -10,10 +10,11 @@ import coachOfPeopleLogo from "../assets/LogoTrenerLudi.svg";
 //Import components
 import Question from "../components/Question";
 import ButtonComponent from "../components/Button";
-import ErrorMessages from "../components/ErrorMessages";
+import ErrorMessage from "../components/ErrorMessage";
 
 //Import redux stuff
 import { getInput } from "../Actions/inputChange";
+import { emailVerification } from "../Actions/emailVerify";
 import { connect } from "react-redux";
 
 function Entry(props) {
@@ -24,6 +25,7 @@ function Entry(props) {
 
   const submit = async (event) => {
     event.preventDefault();
+    props.emailVerification(props.email);
   };
 
   return (
@@ -47,24 +49,27 @@ function Entry(props) {
         name="email"
       />
 
-      {/* <Grid item>{invalidEmail()}</Grid> */}
-
-      <ButtonComponent color="primary" onClick={submit}>
-        Potvrdiť
-      </ButtonComponent>
+      {props.verified === false && <ErrorMessage align="center">Nesprávny email</ErrorMessage>}
+      <Grid item xs={12} align="center">
+        <ButtonComponent color="primary" onClick={submit}>
+          Potvrdiť
+        </ButtonComponent>
+      </Grid>
     </Grid>
   );
 }
 
 const mapStateToProps = (state) => {
   return {
-    email: state.personalInfo.email,
+    email: state.personalInfo.data.email,
+    verified: state.verification.emailVerification,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     setEmailInput: (name, text) => dispatch(getInput(name, text)),
+    emailVerification: (email) => dispatch(emailVerification(email)),
   };
 };
 

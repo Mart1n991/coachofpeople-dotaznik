@@ -21,14 +21,16 @@ const emailVerificationsFailure = (error) => {
   };
 };
 
-// export const emailVerification = () => {
-//   return async (dispatch) => {
-//     try {
-//       dispatch(emailVerificationRequest());
-//       let response = getEmail(email);
-//       dispatch(emailVerificationSuccess(response));
-//     } catch (error) {
-//       dispatch(emailVerificationsFailure(error));
-//     }
-//   };
-// };
+export const emailVerification = (email) => {
+  return async (dispatch) => {
+    try {
+      dispatch(emailVerificationRequest());
+      let response = await getEmail(email);
+      console.log(response);
+      dispatch(emailVerificationSuccess(response));
+    } catch (error) {
+      console.log(error);
+      dispatch(emailVerificationsFailure(error));
+    }
+  };
+};

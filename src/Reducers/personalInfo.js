@@ -10,16 +10,14 @@ const personalData = {
 };
 
 const initialState = {
-  isLoading: false,
-  emailVerify: false,
-  personalInfo: personalData,
+  data: personalData,
 };
 
-const inputReducer = (state = initialState, action) => {
+const personalInfo = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.GET_INPUT:
       return {
-        personalInfo: lodash.set({ ...state.personalInfo }, action.name, action.payload),
+        data: lodash.set({ ...state.data }, action.name, action.payload),
       };
 
     default:
@@ -27,4 +25,4 @@ const inputReducer = (state = initialState, action) => {
   }
 };
 
-export default inputReducer;
+export default personalInfo;
