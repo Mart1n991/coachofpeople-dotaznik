@@ -1,21 +1,28 @@
 import React from "react";
-import PersonalInfo from "./PersonalInfo";
-import Address from "./Address";
-import Exercise from "./Exercise";
-import Goals from "./Goals";
-import Measurments from "./Measurments";
-import LifeStyle from "./LifeStyle";
-import Health from "./Health";
-import AdditionalInfo from "./AdditionalInfo";
-import Finish from "./Finish";
-import ButtonComponent from "../components/Button";
-import { STEP, TOTAL_STEPS } from "../constans/steps";
 import { Grid } from "@material-ui/core";
 
-export default function SectionContainer() {
+import PersonalInfo from "./PersonalInfo";
+import Address from "./Address";
+import Measurments from "./Measurments";
+import Goals from "./Goals";
+import Exercise from "./Exercise";
+import Health from "./Health";
+import LifeStyle from "./LifeStyle";
+import AdditionalInfo from "./AdditionalInfo";
+import Finish from "./Finish";
+
+import { TOTAL_STEPS } from "../constans/steps";
+
+import ButtonComponent from "../components/Button";
+
+import { connect } from "react-redux";
+import { stepForward, stepBack } from "../Actions/buttonControl";
+
+function SectionContainer(props) {
+  console.log(props.step);
   // Sem switchujem kroky v aplikácií na základe čísla kroku sa mi vyrenderuje daný obsah, ktorý potrebujem
   const renderContent = () => {
-    switch (STEP) {
+    switch (props.step) {
       case 2:
         return <Address />;
       case 3:
@@ -43,20 +50,39 @@ export default function SectionContainer() {
       {renderContent()}
 
       <Grid container justify="center">
-        {STEP === 1 ? (
+        {props.step === 1 ? (
           <ButtonComponent disabled color="primary">
             Späť
           </ButtonComponent>
         ) : (
-          <ButtonComponent color="primary">Späť</ButtonComponent>
+          <ButtonComponent color="primary" onClick={props.stepBack}>
+            Späť
+          </ButtonComponent>
         )}
 
-        {STEP === TOTAL_STEPS ? (
+        {props.step === TOTAL_STEPS ? (
           <ButtonComponent color="secondary">Odoslať</ButtonComponent>
         ) : (
-          <ButtonComponent color="secondary">Ďalej</ButtonComponent>
+          <ButtonComponent color="secondary" onClick={props.stepForward}>
+            Ďalej
+          </ButtonComponent>
         )}
       </Grid>
     </>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    step: state.step.currentStep,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    stepForward: () => dispatch(stepForward()),
+    stepBack: () => dispatch(stepBack()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SectionContainer);
