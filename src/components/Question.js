@@ -83,6 +83,7 @@ export default function Question({
                     control={control} //Radio input alebo checkbox input
                     label={input}
                     key={index + uniqueKey}
+                    name={name}
                   />
                 );
               })}
@@ -153,35 +154,12 @@ export default function Question({
 
   return (
     <Grid container justify="center" direction={direction}>
-      <Grid
-        item
-        className={classes.root}
-        xs={xsH}
-        sm={smH}
-        md={mdH}
-        lg={lgH}
-        xl={xlH}
-      >
-        <Headings
-          color={color}
-          variant="subtitle1"
-          align={align}
-          mt={mt}
-          mb={mb}
-        >
+      <Grid item className={classes.root} xs={xsH} sm={smH} md={mdH} lg={lgH} xl={xlH}>
+        <Headings color={color} variant="subtitle1" align={align} mt={mt} mb={mb}>
           {questionText}
         </Headings>
       </Grid>
-      <Grid
-        item
-        className={classes.root}
-        xs={xsQ}
-        sm={smQ}
-        md={mdQ}
-        lg={lgQ}
-        xl={xlQ}
-        align={align}
-      >
+      <Grid item className={classes.root} xs={xsQ} sm={smQ} md={mdQ} lg={lgQ} xl={xlQ} align={align}>
         {typeOfQuestion()}
       </Grid>
     </Grid>
