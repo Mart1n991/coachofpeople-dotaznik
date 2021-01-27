@@ -75,15 +75,14 @@ export default function Question({
           <FormControl>
             <FormLabel required={required}>{label}</FormLabel>
 
-            <RadioGroup onChange={onChange} row={row}>
+            <RadioGroup onChange={onChange} row={row} value={value} name={name}>
               {arrayOfInputs.map((input, index) => {
                 return (
                   <FormControlLabel
-                    value={input}
                     control={control} //Radio input alebo checkbox input
                     label={input}
                     key={index + uniqueKey}
-                    name={name}
+                    value={input}
                   />
                 );
               })}

@@ -27,6 +27,7 @@ function SectionContainer(props) {
     if (firstName.length < 2 || lastName.length < 2 || age.length === 0 || gender === "") {
       return props.errorHandling(errorMessages);
     } else {
+      props.errorHandling(errorMessages);
       return props.stepForward();
     }
   };

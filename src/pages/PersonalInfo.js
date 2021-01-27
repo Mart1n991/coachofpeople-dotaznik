@@ -25,6 +25,7 @@ function PersonalInfo(props) {
         margin={2}
         name="firstName"
         onChange={onInputChange}
+        value={props.personalInfo.firstName}
       />
 
       {props.personalInfoErrors.firstName && <ErrorMessage>{errorMessages.required}</ErrorMessage>}
@@ -37,6 +38,7 @@ function PersonalInfo(props) {
         margin={2}
         name="lastName"
         onChange={onInputChange}
+        value={props.personalInfo.lastName}
       />
 
       {props.personalInfoErrors.lastName && <ErrorMessage>{errorMessages.required}</ErrorMessage>}
@@ -49,6 +51,7 @@ function PersonalInfo(props) {
         name="age"
         onChange={onInputChange}
         min={0}
+        value={props.personalInfo.age}
       />
 
       {props.personalInfoErrors.age && <ErrorMessage>{errorMessages.positiveNumber}</ErrorMessage>}
@@ -63,6 +66,7 @@ function PersonalInfo(props) {
         margin={2}
         onChange={onInputChange}
         name="gender"
+        value={props.personalInfo.gender}
       />
       {props.personalInfoErrors.gender && <ErrorMessage>{errorMessages.required}</ErrorMessage>}
     </Section>
@@ -70,8 +74,8 @@ function PersonalInfo(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
+    personalInfo: state.personalInfo.data,
     personalInfoErrors: state.personalInfo.errors,
   };
 };
