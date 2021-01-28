@@ -6,8 +6,10 @@ export const personalInfo = (state, stepForward, errorHandling) => {
 
   //Porovnanie či všetky položky v array majú dĺžku väčšiu alebo rovnú 1 ak VŠETKY
   //sú dlhšie ako 1 tak vráti true ak iba jedna nebude dlhšia ako 1 tak vráti false.
-  const personalInfoValidation = (value) => value.length >= 1;
+  const personalInfoValidation = (value) => value.toString().length >= 1;
+
   const personalInfo = arrayOfStateValues.every(personalInfoValidation);
+  console.log(personalInfo);
 
   //Podmienka ake personalInfo je true, tak sa spustí action stepForward,
   //ak je false tak sa spustí akcia errorhandling
@@ -29,3 +31,5 @@ export const address = (state, stepForward, errorHandling) => {
   }
   return errorHandling(errorMessages);
 };
+
+export const measurments = (state, stepForward, errorhandling) => {};

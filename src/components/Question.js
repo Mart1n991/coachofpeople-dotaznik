@@ -16,6 +16,7 @@ import { uniqueKey } from "../utils/uniqueKey";
 import { PrettoSlider } from "../styles/style";
 
 export default function Question({
+  ariaLabel,
   align,
   questionText,
   label,
@@ -95,10 +96,6 @@ export default function Question({
           <FormControl>
             <InputLabel>{label}</InputLabel>
             <Select onChange={onChange}>
-              {/* <MenuItem value="">
-                <em>none</em>
-              </MenuItem> */}
-
               {arrayOfInputs.map((input, index) => {
                 return (
                   <MenuItem value={input} key={index + uniqueKey}>
@@ -113,12 +110,12 @@ export default function Question({
       case "slider":
         return (
           <>
-            <Headings variant="body2" color="secondary" mb={0}>
+            <Headings variant="body2" color="primary" mb={0}>
               {sliderName}
             </Headings>
             <PrettoSlider
               onChange={onChange}
-              name={name}
+              aria-label={ariaLabel}
               marks={marks}
               max={max}
               min={min}

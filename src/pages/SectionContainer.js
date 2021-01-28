@@ -17,7 +17,7 @@ import ButtonComponent from "../components/Button";
 
 import { connect } from "react-redux";
 import { stepForward, stepBack } from "../Actions/buttonControl";
-import { errorHandlingPersonalInfo, errorHandlingAddress } from "../Actions/errorHandling";
+import * as errorHandling from "../Actions/errorHandling";
 import { getInputAddress, getInputPersonalInfo } from "../Actions/inputChange";
 import * as validations from "../validations";
 
@@ -29,11 +29,13 @@ function SectionContainer(props) {
 
   const onButtonNext = () => {
     //Validácia sekcie PersonalInfo
-    props.step === 1 &&
-      validations.personalInfo(props.userPersonalInfo, props.stepForward, props.errorPersonalInfo, props.step);
+    props.step === 1 && validations.personalInfo(props.userPersonalInfo, props.stepForward, props.errorPersonalInfo);
 
     //Validácia sekcie Address
-    props.step === 2 && validations.address(props.userAddress, props.stepForward, props.errorAddress, props.step);
+    props.step === 2 && validations.address(props.userAddress, props.stepForward, props.errorAddress);
+
+    //Validácia sekcie Measurments
+    props.step === 3 && validations.personalInfo(props.userMeasurments, props.stepForward, props.errorMeasurments);
   };
 
   const onButtonBack = () => {
@@ -97,6 +99,7 @@ const mapStateToProps = (state) => {
     step: state.step.currentStep,
     userPersonalInfo: state.personalInfo.data,
     userAddress: state.address.data,
+    userMeasurments: state.measurments.data,
   };
 };
 
@@ -104,8 +107,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     stepForward: () => dispatch(stepForward()),
     stepBack: () => dispatch(stepBack()),
-    errorPersonalInfo: (error) => dispatch(errorHandlingPersonalInfo(error)),
-    errorAddress: (error) => dispatch(errorHandlingAddress(error)),
+    errorPersonalInfo: (error) => dispatch(errorHandling.PersonalInfo(error)),
+    errorAddress: (error) => dispatch(errorHandling.Address(error)),
+    errorMeasurments: (error) => dispatch(errorHandling.Measurments(error)),
     handleInputPersonalInfo: (name, text) => dispatch(getInputPersonalInfo(name, text)),
     handleInputAddress: (name, text) => dispatch(getInputAddress(name, text)),
   };

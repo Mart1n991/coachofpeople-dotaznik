@@ -15,3 +15,11 @@ export const getInputAddress = (name, text) => {
     name,
   };
 };
+
+export const getInputMeasurments = (name, text) => {
+  return {
+    type: actionTypes.GET_INPUT_MEASURMENTS,
+    payload: text,
+    name,
+  };
+};
