@@ -1,7 +1,6 @@
 import { Radio } from "@material-ui/core";
 import React from "react";
 import { connect } from "react-redux";
-import { getInput } from "../Actions/inputChange";
 import Question from "../components/Question";
 import Section from "../components/Section";
 import ErrorMessage from "../components/ErrorMessage";
@@ -10,10 +9,6 @@ import { errorMessages } from "../constans/errorMessages";
 
 function PersonalInfo(props) {
   const gender = ["Muž", "Žena"];
-
-  const onInputChange = (event) => {
-    props.setPersonalInfo(event.target.name, event.target.value);
-  };
 
   return (
     <Section sectionName={sectionNames.personalInfo} color="secondary">
@@ -24,7 +19,7 @@ function PersonalInfo(props) {
         type="text"
         margin={2}
         name="firstName"
-        onChange={onInputChange}
+        onChange={props.onChange}
         value={props.personalInfo.firstName}
       />
 
@@ -37,7 +32,7 @@ function PersonalInfo(props) {
         type="text"
         margin={2}
         name="lastName"
-        onChange={onInputChange}
+        onChange={props.onChange}
         value={props.personalInfo.lastName}
       />
 
@@ -49,7 +44,7 @@ function PersonalInfo(props) {
         type="number"
         margin={2}
         name="age"
-        onChange={onInputChange}
+        onChange={props.onChange}
         min={0}
         value={props.personalInfo.age}
       />
@@ -64,7 +59,7 @@ function PersonalInfo(props) {
         questionType="selection"
         row
         margin={2}
-        onChange={onInputChange}
+        onChange={props.onChange}
         name="gender"
         value={props.personalInfo.gender}
       />
@@ -80,10 +75,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setPersonalInfo: (name, text) => dispatch(getInput(name, text)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(PersonalInfo);
+export default connect(mapStateToProps)(PersonalInfo);

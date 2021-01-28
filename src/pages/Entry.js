@@ -13,7 +13,7 @@ import ButtonComponent from "../components/Button";
 import ErrorMessage from "../components/ErrorMessage";
 
 //Import redux stuff
-import { getInput } from "../Actions/inputChange";
+import { getInputPersonalInfo } from "../Actions/inputChange";
 import { emailVerification } from "../Actions/emailVerify";
 import { connect } from "react-redux";
 
@@ -68,7 +68,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setEmailInput: (name, text) => dispatch(getInput(name, text)),
+    setEmailInput: (name, text) => dispatch(getInputPersonalInfo(name, text)),
     emailVerification: (email) => dispatch(emailVerification(email)),
   };
 };

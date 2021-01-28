@@ -17,25 +17,34 @@ import ButtonComponent from "../components/Button";
 
 import { connect } from "react-redux";
 import { stepForward, stepBack } from "../Actions/buttonControl";
-import { errorHandling } from "../Actions/errorhandling";
-import { errorMessages } from "../constans/errorMessages";
+import { errorHandlingPersonalInfo, errorHandlingAddress } from "../Actions/errorHandling";
+import { getInputAddress, getInputPersonalInfo } from "../Actions/inputChange";
+import * as validations from "../validations";
 
 function SectionContainer(props) {
-  // Sem switchujem kroky v aplikácií na základe čísla kroku sa mi vyrenderuje daný obsah, ktorý potrebujem
-  const onButtonNext = () => {
-    const { firstName, lastName, age, gender } = props.userPersonInfo;
-    if (firstName.length < 2 || lastName.length < 2 || age.length === 0 || gender === "") {
-      return props.errorHandling(errorMessages);
-    } else {
-      props.errorHandling(errorMessages);
-      return props.stepForward();
-    }
+  const onInputChange = (event) => {
+    props.step === 1 && props.handleInputPersonalInfo(event.target.name, event.target.value);
+    props.step === 2 && props.handleInputAddress(event.target.name, event.target.value);
   };
 
+  const onButtonNext = () => {
+    //Validácia sekcie PersonalInfo
+    props.step === 1 &&
+      validations.personalInfo(props.userPersonalInfo, props.stepForward, props.errorPersonalInfo, props.step);
+
+    //Validácia sekcie Address
+    props.step === 2 && validations.address(props.userAddress, props.stepForward, props.errorAddress, props.step);
+  };
+
+  const onButtonBack = () => {
+    return props.stepBack();
+  };
+
+  // Sem switchujem kroky v aplikácií na základe čísla kroku sa mi vyrenderuje daný obsah, ktorý potrebujem
   const renderContent = () => {
     switch (props.step) {
       case 2:
-        return <Address />;
+        return <Address onChange={onInputChange} />;
       case 3:
         return <Measurments />;
       case 4:
@@ -52,7 +61,7 @@ function SectionContainer(props) {
         return <Finish />;
 
       default:
-        return <PersonalInfo />;
+        return <PersonalInfo onChange={onInputChange} />;
     }
   };
 
@@ -66,7 +75,7 @@ function SectionContainer(props) {
             Späť
           </ButtonComponent>
         ) : (
-          <ButtonComponent color="primary" onClick={props.stepBack}>
+          <ButtonComponent color="primary" onClick={onButtonBack}>
             Späť
           </ButtonComponent>
         )}
@@ -86,7 +95,8 @@ function SectionContainer(props) {
 const mapStateToProps = (state) => {
   return {
     step: state.step.currentStep,
-    userPersonInfo: state.personalInfo.data,
+    userPersonalInfo: state.personalInfo.data,
+    userAddress: state.address.data,
   };
 };
 
@@ -94,7 +104,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     stepForward: () => dispatch(stepForward()),
     stepBack: () => dispatch(stepBack()),
-    errorHandling: (error) => dispatch(errorHandling(error)),
+    errorPersonalInfo: (error) => dispatch(errorHandlingPersonalInfo(error)),
+    errorAddress: (error) => dispatch(errorHandlingAddress(error)),
+    handleInputPersonalInfo: (name, text) => dispatch(getInputPersonalInfo(name, text)),
+    handleInputAddress: (name, text) => dispatch(getInputAddress(name, text)),
   };
 };
 

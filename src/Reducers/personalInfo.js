@@ -23,13 +23,13 @@ const initialState = {
 
 const personalInfo = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.GET_INPUT:
+    case actionTypes.GET_INPUT_PERSONAL_INFO:
       return {
         ...state,
         data: lodash.set({ ...state.data }, action.name, action.payload),
       };
 
-    case actionTypes.ERROR_HANDLING: {
+    case actionTypes.ERROR_HANDLING_PERSONAL_INFO: {
       return {
         ...state,
         errors: {
