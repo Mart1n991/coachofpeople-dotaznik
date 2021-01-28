@@ -1,6 +1,6 @@
 import { errorMessages } from "./constans/errorMessages";
 
-export const personalInfo = (state, stepForward, errorHandling, step) => {
+export const personalInfo = (state, stepForward, errorHandling) => {
   // Vytovrenie array zo statu
   const arrayOfStateValues = Object.values(state);
 
@@ -18,7 +18,7 @@ export const personalInfo = (state, stepForward, errorHandling, step) => {
   return errorHandling(errorMessages);
 };
 
-export const address = (state, stepForward, errorHandling, step) => {
+export const address = (state, stepForward, errorHandling) => {
   const arrayOfStateValues = Object.values(state);
   const addressValidation = (value) => value.length >= 2;
   const address = arrayOfStateValues.every(addressValidation);

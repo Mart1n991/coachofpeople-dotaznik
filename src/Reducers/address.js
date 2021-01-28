@@ -35,7 +35,7 @@ const address = (state = initialState, action) => {
         ...state,
         errors: {
           street: state.data.street.length > 2 ? undefined : action.error.required,
-          streetNumber: state.data.streetNumber !== "" ? undefined : action.error.required,
+          streetNumber: state.data.streetNumber.length > 0 ? undefined : action.error.required,
           city: state.data.city.length > 2 ? undefined : action.error.required,
           postalCode: state.data.postalCode.length > 2 ? undefined : action.error.required,
           state: state.data.state.length > 2 ? undefined : action.error.required,

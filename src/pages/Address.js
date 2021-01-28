@@ -45,7 +45,7 @@ function Address(props) {
         required
         type="number"
         name="postalCode"
-        value={props.address.postaCode}
+        value={props.address.postalCode}
         onChange={props.onChange}
       />
       {props.addressError.postalCode && <ErrorMessage>{errorMessages.required}</ErrorMessage>}
