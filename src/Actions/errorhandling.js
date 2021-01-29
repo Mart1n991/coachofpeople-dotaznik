@@ -20,3 +20,10 @@ export const Measurments = (error) => {
     error,
   };
 };
+
+export const Goals = (error) => {
+  return {
+    type: actionTypes.ERROR_HANDLING_GOALS,
+    error,
+  };
+};

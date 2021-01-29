@@ -32,4 +32,17 @@ export const address = (state, stepForward, errorHandling) => {
   return errorHandling(errorMessages);
 };
 
-export const measurments = (state, stepForward, errorhandling) => {};
+export const goals = (state, stepForward, errorHandling) => {
+  //Overenie či je zaškrtnutý aspoň 1 cieľ
+  const mainGoalsValues = Object.values(state.mainGoals);
+  const mainGoalsValidation = (value) => value === true;
+  const mainGoals = mainGoalsValues.some(mainGoalsValidation);
+
+  const { timeToAchieveGoals, priority } = state;
+
+  if (mainGoals && timeToAchieveGoals >= 1 && priority.length > 1) {
+    errorHandling(errorMessages);
+    return stepForward();
+  }
+  return errorHandling(errorMessages);
+};

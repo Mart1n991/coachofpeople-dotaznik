@@ -4,7 +4,8 @@ import verification from "./emailVerification";
 import personalInfo from "./personalInfo";
 import address from "./address";
 import measurments from "./measurments";
+import goals from "./goals";
 
-const rootReducer = combineReducers({ personalInfo, address, measurments, verification, step });
+const rootReducer = combineReducers({ personalInfo, address, measurments, goals, verification, step });
 
 export default rootReducer;

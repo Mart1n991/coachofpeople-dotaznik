@@ -1,9 +1,4 @@
-import {
-  createMuiTheme,
-  makeStyles,
-  Slider,
-  withStyles,
-} from "@material-ui/core";
+import { createMuiTheme, makeStyles, Slider, withStyles } from "@material-ui/core";
 
 export const theme = createMuiTheme({
   palette: {
@@ -68,5 +63,11 @@ export const elementsStyles = makeStyles({
 
   container: {
     height: "100vh",
+  },
+
+  formControl: {
+    minWidth: 120,
+    marginTop: 10,
+    textAlign: "center",
   },
 });
