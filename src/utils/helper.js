@@ -6,3 +6,11 @@ export const isOneValid = (object, equal) => {
 
   return validation;
 };
+
+export const isEveryValid = (object, equal) => {
+  const arrayFromObject = Object.values(object);
+  const isValid = (value) => value === equal;
+  const validation = arrayFromObject.every(isValid);
+
+  return validation;
+};

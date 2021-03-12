@@ -27,3 +27,10 @@ export const Goals = (error) => {
     error,
   };
 };
+
+export const Exercises = (error) => {
+  return {
+    type: actionTypes.ERROR_HANDLING_EXERCISES,
+    error,
+  };
+};

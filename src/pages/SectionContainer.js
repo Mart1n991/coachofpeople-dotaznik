@@ -39,6 +39,9 @@ function SectionContainer(props) {
 
     //Validácia sekcie Goals
     props.step === 4 && validations.goals(props.goals, props.stepForward, props.errorGoals);
+
+    //Validácia sekcie Exercises
+    props.step === 5 && validations.exercises(props.exercises, props.stepForward, props.errorExercises);
   };
 
   const onButtonBack = () => {
@@ -104,6 +107,7 @@ const mapStateToProps = (state) => {
     userAddress: state.address.data,
     userMeasurments: state.measurments.data,
     goals: state.goals.data,
+    exercises: state.exercise.data,
   };
 };
 
@@ -115,6 +119,7 @@ const mapDispatchToProps = (dispatch) => {
     errorAddress: (error) => dispatch(errorHandling.Address(error)),
     errorMeasurments: (error) => dispatch(errorHandling.Measurments(error)),
     errorGoals: (error) => dispatch(errorHandling.Goals(error)),
+    errorExercises: (error) => dispatch(errorHandling.Exercises(error)),
     handleInputPersonalInfo: (name, text) => dispatch(getInputPersonalInfo(name, text)),
     handleInputAddress: (name, text) => dispatch(getInputAddress(name, text)),
   };

@@ -5,7 +5,8 @@ import personalInfo from "./personalInfo";
 import address from "./address";
 import measurments from "./measurments";
 import goals from "./goals";
+import exercise from "./exercise";
 
-const rootReducer = combineReducers({ personalInfo, address, measurments, goals, verification, step });
+const rootReducer = combineReducers({ personalInfo, address, measurments, goals, exercise, verification, step });
 
 export default rootReducer;

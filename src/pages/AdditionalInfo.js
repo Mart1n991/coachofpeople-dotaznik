@@ -9,6 +9,7 @@ export default function AdditionalInfo() {
   const priority = ["Pribrať", "Schudnúť"];
   return (
     <Section sectionName={sectionNames.additionalInfo} color="secondary">
+      {/* Tútp ptázku dať preč - vieš odpoveď predsa z cieľov s časti goals*/}
       <Question
         questionText={questions.additionalInfo.priority}
         questionType="selection"
