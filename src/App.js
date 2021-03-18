@@ -36,7 +36,7 @@ function App(props) {
         <CssBaseline />
         <Switch>
           <Route exact path="/">
-            {props.verified && props.token ? <Redirect to="questionnaire" /> : <Entry />}
+            {props.verified ? <Redirect to="questionnaire" /> : <Entry />}
           </Route>
 
           <Route exact path="/admin">

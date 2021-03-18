@@ -44,6 +44,8 @@ function SectionContainer(props) {
     props.step === 7 && validations.health(props.health, props.stepForward, props.errorHealth);
 
     props.step === 8 && props.stepForward();
+
+    localStorage.setItem("user", JSON.stringify(props.user));
   };
 
   const onButtonBack = () => {
@@ -103,6 +105,7 @@ function SectionContainer(props) {
 
 const mapStateToProps = (state) => {
   return {
+    user: state,
     step: state.step.currentStep,
     userPersonalInfo: state.personalInfo.data,
     userAddress: state.address.data,

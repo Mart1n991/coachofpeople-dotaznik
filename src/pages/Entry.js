@@ -27,6 +27,7 @@ function Entry(props) {
   const submit = async (event) => {
     event.preventDefault();
     props.emailVerification(props.email);
+    localStorage.setItem("email", props.email);
   };
 
   return (
@@ -57,7 +58,7 @@ function Entry(props) {
         </ButtonComponent>
       </Grid>
 
-      <ReCaptcha />
+      {/* <ReCaptcha /> */}
     </Grid>
   );
 }

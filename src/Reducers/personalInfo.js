@@ -33,8 +33,8 @@ const personalInfo = (state = initialState, action) => {
       return {
         ...state,
         errors: {
-          firstName: state.data.firstName.length > 2 ? undefined : action.error.required,
-          lastName: state.data.lastName.length > 2 ? undefined : action.error.required,
+          firstName: state.data.firstName.length >= 2 ? undefined : action.error.required,
+          lastName: state.data.lastName.length >= 2 ? undefined : action.error.required,
           gender: state.data.gender !== "" ? undefined : action.error.required,
           age: state.data.age.length > 0 ? undefined : action.error.positiveNumber,
         },
