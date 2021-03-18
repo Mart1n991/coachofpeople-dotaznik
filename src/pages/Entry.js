@@ -11,6 +11,7 @@ import coachOfPeopleLogo from "../assets/LogoTrenerLudi.svg";
 import Question from "../components/Question";
 import ButtonComponent from "../components/Button";
 import ErrorMessage from "../components/ErrorMessage";
+import ReCaptcha from "../components/ReCaptcha";
 
 //Import redux stuff
 import { getInputPersonalInfo } from "../Actions/inputChange";
@@ -55,6 +56,8 @@ function Entry(props) {
           Potvrdiť
         </ButtonComponent>
       </Grid>
+
+      <ReCaptcha />
     </Grid>
   );
 }
@@ -63,6 +66,7 @@ const mapStateToProps = (state) => {
   return {
     email: state.personalInfo.data.email,
     verified: state.verification.emailVerification,
+    token: state.verification.token,
   };
 };
 

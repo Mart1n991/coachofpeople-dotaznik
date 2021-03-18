@@ -8,8 +8,16 @@ import SectionContainer from "./pages/SectionContainer";
 import AdminEntry from "./pages/AdminSection/AdminEntry";
 import Entry from "./pages/Entry";
 import { connect } from "react-redux";
+import { loadReCaptcha } from "react-recaptcha-google";
+import { recaptcha } from "./Actions/emailVerify";
+import { useEffect } from "react";
 
 function App(props) {
+  /**Initialize recaptcha */
+  useEffect(() => {
+    loadReCaptcha();
+  });
+
   /*
   Presmerovanie s "/questionnaire" späť na validáciu emailu v prípade ak fetchEmailData.show sa nerovná true. Chcem tak zabrániť tomu, že ak sa 
   niekto pokúsi pristúpiť na cestu "/questionnaire" manuálne, tak ho presmeruje späť.
@@ -28,7 +36,7 @@ function App(props) {
         <CssBaseline />
         <Switch>
           <Route exact path="/">
-            {props.verified ? <Redirect to="questionnaire" /> : <Entry />}
+            {props.verified && props.token ? <Redirect to="questionnaire" /> : <Entry />}
           </Route>
 
           <Route exact path="/admin">
@@ -47,7 +55,14 @@ function App(props) {
 const mapStateToProps = (state) => {
   return {
     verified: state.verification.emailVerification,
+    token: state.verification.token,
   };
 };
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    recaptcha: (token) => dispatch(recaptcha(token)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

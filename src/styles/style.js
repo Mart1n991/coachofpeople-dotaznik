@@ -54,10 +54,12 @@ export const PrettoSlider = withStyles({
 //Styling for individual elements
 export const elementsStyles = makeStyles({
   logoSmall: {
+    marginBottom: "30px",
     width: "50%",
   },
 
   logoLarge: {
+    marginBottom: "20px",
     width: "20%",
   },
 

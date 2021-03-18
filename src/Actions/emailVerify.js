@@ -26,11 +26,16 @@ export const emailVerification = (email) => {
     try {
       dispatch(emailVerificationRequest());
       let response = await getEmail(email);
-      console.log(response);
       dispatch(emailVerificationSuccess(response));
     } catch (error) {
-      console.log(error);
       dispatch(emailVerificationsFailure(error));
     }
+  };
+};
+
+export const recaptcha = (token) => {
+  return {
+    type: actionTypes.RECAPTCHA,
+    token,
   };
 };
