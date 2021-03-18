@@ -16,6 +16,7 @@ import { uniqueKey } from "../utils/uniqueKey";
 import { PrettoSlider } from "../styles/style";
 
 export default function Question({
+  ariaValuetext,
   ariaLabel,
   align,
   questionText,
@@ -116,6 +117,7 @@ export default function Question({
             <PrettoSlider
               onChange={onChange}
               aria-label={ariaLabel}
+              aria-valuetext={ariaValuetext}
               marks={marks}
               max={max}
               min={min}

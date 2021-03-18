@@ -18,16 +18,16 @@ export const questions = {
   },
   lifestyle: {
     proffesion: "Aké je vaše povolanie?",
-    levelOfMovementInWork:
-      "Aká je vaša úroveň pohybovej aktivity pri vašom povolaní?",
+    levelOfMovementInWork: "Aká je vaša úroveň pohybovej aktivity pri vašom povolaní?",
     workOnShifts: "Pracujete na zmeny?",
     traveling: "Ako často cestujete na dlhšie vzdialenosti?",
     foodInvestment: "Koľko € by ste chceli týždenne investovať do potravín?",
     suplementInvestment: "Koľko € by ste chceli investovať o doplnkov výživy?",
-    fastFood:
-      "Koľko jedál si do týždňa objednáde v reštauráciách a fastfoodoch?",
+    fastFood: "Koľko jedál si do týždňa objednáde v reštauráciách a fastfoodoch?",
     allergies: "Máte alergie?",
+    allergiesList: "Napíšte alergiu a pridajte",
     suplements: "Užívate doplnky výživy?",
+    suplementsList: "Napíšte doplnok a pridajte",
     unPopularFood: "Vypíšte jedlá, ktoré nemáte radi",
     popularFood: "Vypíšte jedlá, ktoré máte radi",
     qualities: "Ohodnotťe nasledujúce",
@@ -39,10 +39,8 @@ export const questions = {
   },
   additionalInfo: {
     priority: "Aká je vaša priorita?",
-    requirements:
-      "Máte špeciálne požiadavky, ktoré chcete pri spolupráci zohľadniť?",
-    complaints:
-      "Aké sú vaše najčastejšie sťažnosti z oblastí vášho zdravia, výživy a postavy?",
+    requirements: "Máte špeciálne požiadavky, ktoré chcete pri spolupráci zohľadniť?",
+    complaints: "Aké sú vaše najčastejšie sťažnosti z oblastí vášho zdravia, výživy a postavy?",
     expactations: "Čo očakávate od spolupráce so mnou?",
     relax: "Čo považujete za relax?",
   },

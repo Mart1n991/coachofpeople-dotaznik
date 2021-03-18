@@ -71,3 +71,25 @@ export const elementsStyles = makeStyles({
     textAlign: "center",
   },
 });
+
+export const listStyles = makeStyles({
+  listContainer: {
+    marginTop: "10px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+
+  list: {
+    width: "80%",
+    margin: "5px",
+    padding: "5px 15px",
+    letterSpacing: "1px",
+    backgroundColor: "#94d1f2",
+    color: "black",
+    fontWeight: "bold",
+    borderRadius: "8px",
+    cursor: "pointer",
+    textAlign: "center",
+  },
+});

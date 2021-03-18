@@ -56,3 +56,32 @@ export const exercises = (state, stepForward, errorHandling) => {
 
   return errorHandling(errorMessages);
 };
+
+export const lifestyle = (state, stepForward, errorHandling) => {
+  const {
+    workType,
+    movementActivity,
+    traveling,
+    foodInvestment,
+    suplementInvestment,
+    orderingFoodPerWeek,
+    allergies,
+    suplements,
+  } = state;
+
+  if (
+    workType.length > 3 &&
+    movementActivity !== "" &&
+    traveling !== "" &&
+    foodInvestment !== "" &&
+    suplementInvestment !== "" &&
+    orderingFoodPerWeek !== "" &&
+    allergies.answer !== null &&
+    suplements.answer !== null
+  ) {
+    errorHandling(errorMessages);
+    return stepForward();
+  }
+
+  return errorHandling(errorMessages);
+};

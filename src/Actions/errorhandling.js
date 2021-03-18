@@ -34,3 +34,10 @@ export const Exercises = (error) => {
     error,
   };
 };
+
+export const lifestyle = (error) => {
+  return {
+    type: actionTypes.ERROR_HANDLING_LIFESTYLE,
+    error,
+  };
+};

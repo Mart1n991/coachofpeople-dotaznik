@@ -1,2 +1,2 @@
 export const TOTAL_STEPS = 9;
-export const STEP = 5;
+export const STEP = 6;
