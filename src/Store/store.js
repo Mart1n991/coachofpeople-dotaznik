@@ -4,7 +4,6 @@ import rootReducer from "../Reducers";
 import { loadState, saveState } from "../utils/localStorage";
 
 const persistedState = loadState();
-console.log(persistedState);
 
 const store = createStore(
   rootReducer,
