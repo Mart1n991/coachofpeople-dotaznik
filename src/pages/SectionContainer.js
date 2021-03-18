@@ -18,15 +18,9 @@ import ButtonComponent from "../components/Button";
 import { connect } from "react-redux";
 import { stepForward, stepBack } from "../Actions/buttonControl";
 import * as errorHandling from "../Actions/errorHandling";
-import { getInputAddress, getInputPersonalInfo } from "../Actions/inputChange";
 import * as validations from "../validations";
 
 function SectionContainer(props) {
-  const onInputChange = (event) => {
-    props.step === 1 && props.handleInputPersonalInfo(event.target.name, event.target.value);
-    props.step === 2 && props.handleInputAddress(event.target.name, event.target.value);
-  };
-
   const onButtonNext = () => {
     //Validácia sekcie PersonalInfo
     props.step === 1 && validations.personalInfo(props.userPersonalInfo, props.stepForward, props.errorPersonalInfo);
@@ -48,6 +42,8 @@ function SectionContainer(props) {
 
     //Validácia sekcie Health
     props.step === 7 && validations.health(props.health, props.stepForward, props.errorHealth);
+
+    props.step === 8 && props.stepForward();
   };
 
   const onButtonBack = () => {
@@ -58,7 +54,7 @@ function SectionContainer(props) {
   const renderContent = () => {
     switch (props.step) {
       case 2:
-        return <Address onChange={onInputChange} />;
+        return <Address />;
       case 3:
         return <Measurments />;
       case 4:
@@ -75,10 +71,9 @@ function SectionContainer(props) {
         return <Finish />;
 
       default:
-        return <PersonalInfo onChange={onInputChange} />;
+        return <PersonalInfo />;
     }
   };
-
   return (
     <>
       {renderContent()}
@@ -130,8 +125,6 @@ const mapDispatchToProps = (dispatch) => {
     errorExercises: (error) => dispatch(errorHandling.Exercises(error)),
     errorLifestyle: (error) => dispatch(errorHandling.lifestyle(error)),
     errorHealth: (error) => dispatch(errorHandling.health(error)),
-    handleInputPersonalInfo: (name, text) => dispatch(getInputPersonalInfo(name, text)),
-    handleInputAddress: (name, text) => dispatch(getInputAddress(name, text)),
   };
 };
 

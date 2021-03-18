@@ -6,6 +6,7 @@ import Section from "../components/Section";
 import ErrorMessage from "../components/ErrorMessage";
 import { sectionNames } from "../constans/sectionNames";
 import { errorMessages } from "../constans/errorMessages";
+import { getInputPersonalInfo } from "../Actions/inputChange";
 
 function PersonalInfo(props) {
   const gender = ["Muž", "Žena"];
@@ -19,7 +20,7 @@ function PersonalInfo(props) {
         type="text"
         margin={2}
         name="firstName"
-        onChange={props.onChange}
+        onChange={(e) => props.handleInputPersonalInfo(e.target.name, e.target.value)}
         value={props.personalInfo.firstName}
       />
 
@@ -32,7 +33,7 @@ function PersonalInfo(props) {
         type="text"
         margin={2}
         name="lastName"
-        onChange={props.onChange}
+        onChange={(e) => props.handleInputPersonalInfo(e.target.name, e.target.value)}
         value={props.personalInfo.lastName}
       />
 
@@ -44,7 +45,7 @@ function PersonalInfo(props) {
         type="number"
         margin={2}
         name="age"
-        onChange={props.onChange}
+        onChange={(e) => props.handleInputPersonalInfo(e.target.name, e.target.value)}
         min={0}
         value={props.personalInfo.age}
       />
@@ -59,7 +60,7 @@ function PersonalInfo(props) {
         questionType="selection"
         row
         margin={2}
-        onChange={props.onChange}
+        onChange={(e) => props.handleInputPersonalInfo(e.target.name, e.target.value)}
         name="gender"
         value={props.personalInfo.gender}
       />
@@ -75,4 +76,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(PersonalInfo);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleInputPersonalInfo: (name, text) => dispatch(getInputPersonalInfo(name, text)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PersonalInfo);

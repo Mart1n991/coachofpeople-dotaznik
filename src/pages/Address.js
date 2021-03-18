@@ -4,6 +4,7 @@ import Section from "../components/Section";
 import ErrorMessage from "../components/ErrorMessage";
 import { sectionNames } from "../constans/sectionNames";
 import { errorMessages } from "../constans/errorMessages";
+import { getInputAddress } from "../Actions/inputChange";
 import { connect } from "react-redux";
 
 function Address(props) {
@@ -16,7 +17,7 @@ function Address(props) {
         type="text"
         name="street"
         value={props.address.street}
-        onChange={props.onChange}
+        onChange={(e) => props.handleInputAddress(e.target.name, e.target.value)}
       />
       {props.addressError.street && <ErrorMessage>{errorMessages.required}</ErrorMessage>}
       <Question
@@ -26,7 +27,7 @@ function Address(props) {
         type="number"
         name="streetNumber"
         value={props.address.streetNumber}
-        onChange={props.onChange}
+        onChange={(e) => props.handleInputAddress(e.target.name, e.target.value)}
       />
       {props.addressError.streetNumber && <ErrorMessage>{errorMessages.required}</ErrorMessage>}
       <Question
@@ -36,7 +37,7 @@ function Address(props) {
         type="text"
         name="city"
         value={props.address.city}
-        onChange={props.onChange}
+        onChange={(e) => props.handleInputAddress(e.target.name, e.target.value)}
       />
       {props.addressError.city && <ErrorMessage>{errorMessages.required}</ErrorMessage>}
       <Question
@@ -46,7 +47,7 @@ function Address(props) {
         type="number"
         name="postalCode"
         value={props.address.postalCode}
-        onChange={props.onChange}
+        onChange={(e) => props.handleInputAddress(e.target.name, e.target.value)}
       />
       {props.addressError.postalCode && <ErrorMessage>{errorMessages.required}</ErrorMessage>}
       <Question
@@ -56,7 +57,7 @@ function Address(props) {
         type="text"
         name="state"
         value={props.address.state}
-        onChange={props.onChange}
+        onChange={(e) => props.handleInputAddress(e.target.name, e.target.value)}
       />
       {props.addressError.state && <ErrorMessage>{errorMessages.required}</ErrorMessage>}
     </Section>
@@ -70,4 +71,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Address);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleInputAddress: (name, text) => dispatch(getInputAddress(name, text)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Address);

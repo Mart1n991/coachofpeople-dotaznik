@@ -1,27 +1,14 @@
-import { Radio } from "@material-ui/core";
 import React from "react";
+import { connect } from "react-redux";
+import { requirementsInput, complainsInput, relaxInput } from "../Actions/addtionalInfo";
 import Question from "../components/Question";
 import Section from "../components/Section";
 import { questions } from "../constans/questions";
 import { sectionNames } from "../constans/sectionNames";
 
-export default function AdditionalInfo() {
-  const priority = ["Pribrať", "Schudnúť"];
+function AdditionalInfo(props) {
   return (
     <Section sectionName={sectionNames.additionalInfo} color="secondary">
-      {/* Tútp ptázku dať preč - vieš odpoveď predsa z cieľov s časti goals*/}
-      <Question
-        questionText={questions.additionalInfo.priority}
-        questionType="selection"
-        control={<Radio />}
-        arrayOfInputs={priority}
-        color="primary"
-        mt={2}
-        row
-        direction="column"
-        align="center"
-      />
-
       <Question
         questionText={questions.additionalInfo.requirements}
         multiline
@@ -31,6 +18,8 @@ export default function AdditionalInfo() {
         variant="outlined"
         align="center"
         label="Požiadavky"
+        value={props.data.requirements}
+        onChange={(e) => props.requirementsInput(e.target.value)}
       />
 
       <Question
@@ -42,6 +31,8 @@ export default function AdditionalInfo() {
         variant="outlined"
         align="center"
         label="Sťažnosti"
+        value={props.data.complains}
+        onChange={(e) => props.complainsInput(e.target.value)}
       />
 
       <Question
@@ -53,7 +44,25 @@ export default function AdditionalInfo() {
         variant="outlined"
         align="center"
         label="Relax"
+        value={props.data.relax}
+        onChange={(e) => props.relaxInput(e.target.value)}
       />
     </Section>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    data: state.additionalInfo,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    requirementsInput: (text) => dispatch(requirementsInput(text)),
+    complainsInput: (text) => dispatch(complainsInput(text)),
+    relaxInput: (text) => dispatch(relaxInput(text)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdditionalInfo);

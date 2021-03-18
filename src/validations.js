@@ -1,7 +1,7 @@
 import { errorMessages } from "./constans/errorMessages";
 
 export const personalInfo = (state, stepForward, errorHandling) => {
-  // Vytovrenie array zo statu
+  // Vytvorenie array zo statu
   const arrayOfStateValues = Object.values(state);
 
   //Porovnanie či všetky položky v array majú dĺžku väčšiu alebo rovnú 1 ak VŠETKY
