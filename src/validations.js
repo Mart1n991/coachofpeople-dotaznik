@@ -85,3 +85,14 @@ export const lifestyle = (state, stepForward, errorHandling) => {
 
   return errorHandling(errorMessages);
 };
+
+export const health = (state, stepForward, errorHandling) => {
+  const { medicine, problems, injuries } = state;
+
+  if ((medicine.answer !== null && problems.answer !== null, injuries.answer !== null)) {
+    errorHandling(errorMessages);
+    return stepForward();
+  }
+
+  return errorHandling(errorMessages);
+};

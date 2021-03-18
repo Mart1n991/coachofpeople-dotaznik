@@ -36,6 +36,9 @@ export const questions = {
     healthProblems: "Máte zdravotné problémy?",
     medicals: "Užívate lieky?",
     injuries: "Máte zranenia?",
+    problemsList: "Napíšte problém a pridajte",
+    medicalsList: "Napíšte liek a pridajte",
+    injuriesList: "Napíšte zranenie a pridajte",
   },
   additionalInfo: {
     priority: "Aká je vaša priorita?",

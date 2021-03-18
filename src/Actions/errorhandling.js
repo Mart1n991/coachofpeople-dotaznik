@@ -41,3 +41,10 @@ export const lifestyle = (error) => {
     error,
   };
 };
+
+export const health = (error) => {
+  return {
+    type: actionTypes.ERROR_HANDLING_HEALTH,
+    error,
+  };
+};

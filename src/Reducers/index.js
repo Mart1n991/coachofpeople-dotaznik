@@ -7,6 +7,7 @@ import measurments from "./measurments";
 import goals from "./goals";
 import exercise from "./exercise";
 import lifestyle from "./lifestyle";
+import health from "./health";
 
 const rootReducer = combineReducers({
   personalInfo,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   verification,
   step,
   lifestyle,
+  health,
 });
 
 export default rootReducer;

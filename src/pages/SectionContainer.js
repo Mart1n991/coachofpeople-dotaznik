@@ -45,6 +45,9 @@ function SectionContainer(props) {
 
     //Validácia sekcie Lifestyle
     props.step === 6 && validations.lifestyle(props.lifestyle, props.stepForward, props.errorLifestyle);
+
+    //Validácia sekcie Health
+    props.step === 7 && validations.health(props.health, props.stepForward, props.errorHealth);
   };
 
   const onButtonBack = () => {
@@ -112,6 +115,7 @@ const mapStateToProps = (state) => {
     goals: state.goals.data,
     exercises: state.exercise.data,
     lifestyle: state.lifestyle.data,
+    health: state.health.data,
   };
 };
 
@@ -125,6 +129,7 @@ const mapDispatchToProps = (dispatch) => {
     errorGoals: (error) => dispatch(errorHandling.Goals(error)),
     errorExercises: (error) => dispatch(errorHandling.Exercises(error)),
     errorLifestyle: (error) => dispatch(errorHandling.lifestyle(error)),
+    errorHealth: (error) => dispatch(errorHandling.health(error)),
     handleInputPersonalInfo: (name, text) => dispatch(getInputPersonalInfo(name, text)),
     handleInputAddress: (name, text) => dispatch(getInputAddress(name, text)),
   };
