@@ -20,6 +20,9 @@ import { stepForward, stepBack } from "../Actions/buttonControl";
 import * as errorHandling from "../Actions/errorHandling";
 import * as validations from "../validations";
 
+import firebase from "../firebase/config";
+import Thankyou from "./Thankyou";
+
 function SectionContainer(props) {
   const onButtonNext = () => {
     //Validácia sekcie PersonalInfo
@@ -52,6 +55,23 @@ function SectionContainer(props) {
     return props.stepBack();
   };
 
+  const onSubmit = () => {
+    firebase.firestore().collection("users").add({
+      additionalInfo: props.user.additionalInfo,
+      address: props.user.address.data,
+      exercise: props.user.exercise.data,
+      goals: props.user.goals.data,
+      health: props.user.health.data,
+      lifestyle: props.user.lifestyle.data,
+      measurments: props.user.measurments.data,
+      personalInfo: props.user.personalInfo.data,
+    });
+
+    props.step === 9 && props.stepForward();
+
+    localStorage.clear();
+  };
+
   // Sem switchujem kroky v aplikácií na základe čísla kroku sa mi vyrenderuje daný obsah, ktorý potrebujem
   const renderContent = () => {
     switch (props.step) {
@@ -71,6 +91,8 @@ function SectionContainer(props) {
         return <AdditionalInfo />;
       case 9:
         return <Finish />;
+      case 10:
+        return <Thankyou />;
 
       default:
         return <PersonalInfo />;
@@ -85,15 +107,17 @@ function SectionContainer(props) {
           <ButtonComponent disabled color="primary">
             Späť
           </ButtonComponent>
-        ) : (
+        ) : props.step === TOTAL_STEPS ? null : (
           <ButtonComponent color="primary" onClick={onButtonBack}>
             Späť
           </ButtonComponent>
         )}
 
-        {props.step === TOTAL_STEPS ? (
-          <ButtonComponent color="secondary">Odoslať</ButtonComponent>
-        ) : (
+        {props.step === 9 ? (
+          <ButtonComponent color="secondary" onClick={onSubmit}>
+            Odoslať
+          </ButtonComponent>
+        ) : props.step === TOTAL_STEPS ? null : (
           <ButtonComponent color="secondary" onClick={onButtonNext}>
             Ďalej
           </ButtonComponent>
