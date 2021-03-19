@@ -1,4 +1,8 @@
+import { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { loadReCaptcha } from "react-recaptcha-google";
+
 import { CssBaseline } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/core/styles";
 
@@ -7,10 +11,8 @@ import { theme } from "./styles/style";
 import SectionContainer from "./pages/SectionContainer";
 import AdminEntry from "./pages/AdminSection/AdminEntry";
 import Entry from "./pages/Entry";
-import { connect } from "react-redux";
-import { loadReCaptcha } from "react-recaptcha-google";
+
 import { recaptcha } from "./Actions/emailVerify";
-import { useEffect } from "react";
 
 function App(props) {
   /**Initialize recaptcha */
