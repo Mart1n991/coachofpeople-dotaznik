@@ -19,11 +19,11 @@ const initialData = {
     bentOverRows: "Bez skúseností",
   },
 
-  workoutRegularly: "Áno",
+  workoutRegularly: "",
 
   exercises: {
-    Pondelok: { day: "Pondelok", type: "Posilňovanie", duration: "100 minút" },
-    Utorok: { day: "Utorok", type: "Voľno", duration: "" },
+    Pondelok: { day: "Pondelok", type: "", duration: "" },
+    Utorok: { day: "Utorok", type: "", duration: "" },
     Streda: { day: "Streda", type: "", duration: "" },
     Štvrtok: { day: "Štvrtok", type: "", duration: "" },
     Piatok: { day: "Piatok", type: "", duration: "" },

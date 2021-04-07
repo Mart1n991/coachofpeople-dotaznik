@@ -252,7 +252,7 @@ function MyDocument(props) {
             }}
           >
             Ramená:
-            <Text style={{ ...styles.text, fontWeight: "bold" }}>{props.data.measurments.data.sholuders} CM</Text>
+            <Text style={{ ...styles.text, fontWeight: "bold" }}>{props.data.measurments.data.shoulders} CM</Text>
           </Text>
           <Text
             style={{
@@ -465,7 +465,7 @@ function MyDocument(props) {
           <Text style={{ ...styles.text, fontWeight: "bold" }}>
             Týždenné objednávanie jedál z fastfoodov a reštaurácií
           </Text>
-          <Text style={styles.text}>{props.data.lifestyle.data.oredringFoodPerWeek}</Text>
+          <Text style={styles.text}>{props.data.lifestyle.data.orderingFoodPerWeek}</Text>
         </View>
 
         {props.data.lifestyle.data.allergies.answer === "Áno" ? (
