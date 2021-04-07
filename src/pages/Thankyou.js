@@ -7,25 +7,26 @@ import { connect } from "react-redux";
 function Thankyou(props) {
   return (
     <Section sectionName="Ďakujem" color="secondary">
-      <h3>:\</h3>
-      <p>Dotazník bol úspešne odoslaný</p>
+      <div style={{ textAlign: "center" }}>
+        <p style={{ marginBottom: "50px" }}>Dotazník bol úspešne odoslaný :)</p>
 
-      <PDFDownloadLink
-        document={<MyDocument data={props.user} />}
-        fileName="dotaznik.pdf"
-        style={{
-          textDecoration: "none",
-          color: "white",
-          borderRadius: "10px",
-          padding: "10px 20px",
-          cursor: "pointer",
-          backgroundColor: "orange",
-        }}
-      >
-        {({ blob, url, loading, error }) => {
-          return loading ? "Loading document..." : "Download now!";
-        }}
-      </PDFDownloadLink>
+        <PDFDownloadLink
+          document={<MyDocument data={props.user} />}
+          fileName="dotaznik.pdf"
+          style={{
+            textDecoration: "none",
+            color: "white",
+            borderRadius: "10px",
+            padding: "10px 20px",
+            cursor: "pointer",
+            backgroundColor: "orange",
+          }}
+        >
+          {({ blob, url, loading, error }) => {
+            return loading ? "Načítava sa dokument..." : "Stiahnuť pdf";
+          }}
+        </PDFDownloadLink>
+      </div>
     </Section>
   );
 }
