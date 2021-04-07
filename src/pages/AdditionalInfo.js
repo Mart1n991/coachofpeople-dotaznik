@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { requirementsInput, complainsInput, relaxInput } from "../actions/addtionalInfo";
+import { requirementsInput, complainsInput, relaxInput } from "../Actions/addtionalInfo";
 import Question from "../components/Question";
 import Section from "../components/Section";
 import { questions } from "../constans/questions";

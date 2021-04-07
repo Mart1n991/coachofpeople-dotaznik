@@ -8,7 +8,7 @@ import { questions } from "../constans/questions";
 import ErrorMessage from "../components/ErrorMessage";
 import { sectionNames } from "../constans/sectionNames";
 import { connect } from "react-redux";
-import * as lifestyleActions from "../actions/lifestyle";
+import * as lifestyleActions from "../Actions/lifestyle";
 import AddList from "../components/AddList";
 import List from "../components/List";
 

@@ -6,7 +6,7 @@ import Section from "../components/Section";
 import ErrorMessage from "../components/ErrorMessage";
 import { questions } from "../constans/questions";
 import { sectionNames } from "../constans/sectionNames";
-import * as health from "../actions/health";
+import * as health from "../Actions/health";
 import AddList from "../components/AddList";
 import List from "../components/List";
 

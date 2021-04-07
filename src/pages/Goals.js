@@ -6,7 +6,7 @@ import Question from "../components/Question";
 import Section from "../components/Section";
 import { questions } from "../constans/questions";
 import { sectionNames } from "../constans/sectionNames";
-import { getGoalDuration, getGoalImportance, getInputGoals } from "../actions/inputChange";
+import { getGoalDuration, getGoalImportance, getInputGoals } from "../Actions/inputChange";
 import Headings from "../components/Headings";
 import ErrorMessage from "../components/ErrorMessage";
 

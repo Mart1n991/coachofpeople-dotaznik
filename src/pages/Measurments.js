@@ -8,7 +8,7 @@ import { sectionNames } from "../constans/sectionNames";
 import { errorMessages } from "../constans/errorMessages";
 
 import Grid from "@material-ui/core/Grid";
-import { getInputMeasurments } from "../actions/inputChange";
+import { getInputMeasurments } from "../Actions/inputChange";
 
 function Measurments(props) {
   const marksHeight = [

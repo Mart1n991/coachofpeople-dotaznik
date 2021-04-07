@@ -21,7 +21,7 @@ import {
   exerciseLevel,
   exerciseRegularly,
   exerciseType,
-} from "../actions/exerciseActions";
+} from "../Actions/exerciseActions";
 import Headings from "../components/Headings";
 import Question from "../components/Question";
 import Section from "../components/Section";

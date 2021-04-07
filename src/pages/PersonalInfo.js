@@ -6,7 +6,7 @@ import Section from "../components/Section";
 import ErrorMessage from "../components/ErrorMessage";
 import { sectionNames } from "../constans/sectionNames";
 import { errorMessages } from "../constans/errorMessages";
-import { getInputPersonalInfo } from "../actions/inputChange";
+import { getInputPersonalInfo } from "../Actions/inputChange";
 
 function PersonalInfo(props) {
   const gender = ["Muž", "Žena"];
