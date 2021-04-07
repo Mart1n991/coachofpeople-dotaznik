@@ -17,8 +17,23 @@ import ButtonComponent from "../components/Button";
 
 import { connect } from "react-redux";
 import { stepForward, stepBack } from "../Actions/buttonControl";
-import * as errorHandling from "../Actions/errorHandling";
-import * as validations from "../validations";
+import {
+  errorPersonalInfo,
+  errorAddress,
+  errorMeasurments,
+  errorGoals,
+  errorExercises,
+  errorLifestyle,
+  errorHealth,
+} from "../Actions/errorHandling";
+import {
+  personalInfoValid,
+  addressValid,
+  goalsValid,
+  healthValid,
+  exercisesValid,
+  lifestyleValid,
+} from "../validations";
 
 import firebase from "../firebase/config";
 import Thankyou from "./Thankyou";
@@ -26,25 +41,25 @@ import Thankyou from "./Thankyou";
 function SectionContainer(props) {
   const onButtonNext = () => {
     //Validácia sekcie PersonalInfo
-    props.step === 1 && validations.personalInfo(props.userPersonalInfo, props.stepForward, props.errorPersonalInfo);
+    props.step === 1 && personalInfoValid(props.userPersonalInfo, props.stepForward, props.errorPersonalInfo);
 
     //Validácia sekcie Address
-    props.step === 2 && validations.address(props.userAddress, props.stepForward, props.errorAddress);
+    props.step === 2 && addressValid(props.userAddress, props.stepForward, props.errorAddress);
 
     //Validácia sekcie Measurments
-    props.step === 3 && validations.personalInfo(props.userMeasurments, props.stepForward, props.errorMeasurments);
+    props.step === 3 && personalInfoValid(props.userMeasurments, props.stepForward, props.errorMeasurments);
 
     //Validácia sekcie Goals
-    props.step === 4 && validations.goals(props.goals, props.stepForward, props.errorGoals);
+    props.step === 4 && goalsValid(props.goals, props.stepForward, props.errorGoals);
 
     //Validácia sekcie Exercises
-    props.step === 5 && validations.exercises(props.exercises, props.stepForward, props.errorExercises);
+    props.step === 5 && exercisesValid(props.exercises, props.stepForward, props.errorExercises);
 
     //Validácia sekcie Lifestyle
-    props.step === 6 && validations.lifestyle(props.lifestyle, props.stepForward, props.errorLifestyle);
+    props.step === 6 && lifestyleValid(props.lifestyle, props.stepForward, props.errorLifestyle);
 
     //Validácia sekcie Health
-    props.step === 7 && validations.health(props.health, props.stepForward, props.errorHealth);
+    props.step === 7 && healthValid(props.health, props.stepForward, props.errorHealth);
 
     props.step === 8 && props.stepForward();
 
@@ -69,7 +84,7 @@ function SectionContainer(props) {
 
     props.step === 9 && props.stepForward();
 
-    // localStorage.clear();
+    localStorage.clear();
   };
 
   // Sem switchujem kroky v aplikácií na základe čísla kroku sa mi vyrenderuje daný obsah, ktorý potrebujem
@@ -145,13 +160,13 @@ const mapDispatchToProps = (dispatch) => {
   return {
     stepForward: () => dispatch(stepForward()),
     stepBack: () => dispatch(stepBack()),
-    errorPersonalInfo: (error) => dispatch(errorHandling.PersonalInfo(error)),
-    errorAddress: (error) => dispatch(errorHandling.Address(error)),
-    errorMeasurments: (error) => dispatch(errorHandling.Measurments(error)),
-    errorGoals: (error) => dispatch(errorHandling.Goals(error)),
-    errorExercises: (error) => dispatch(errorHandling.Exercises(error)),
-    errorLifestyle: (error) => dispatch(errorHandling.lifestyle(error)),
-    errorHealth: (error) => dispatch(errorHandling.health(error)),
+    errorPersonalInfo: (error) => dispatch(errorPersonalInfo(error)),
+    errorAddress: (error) => dispatch(errorAddress(error)),
+    errorMeasurments: (error) => dispatch(errorMeasurments(error)),
+    errorGoals: (error) => dispatch(errorGoals(error)),
+    errorExercises: (error) => dispatch(errorExercises(error)),
+    errorLifestyle: (error) => dispatch(errorLifestyle(error)),
+    errorHealth: (error) => dispatch(errorHealth(error)),
   };
 };
 

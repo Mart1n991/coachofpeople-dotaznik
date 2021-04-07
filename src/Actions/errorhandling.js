@@ -1,48 +1,48 @@
 import actionTypes from "./actionTypes";
 
-export const PersonalInfo = (error) => {
+export const errorPersonalInfo = (error) => {
   return {
     type: actionTypes.ERROR_HANDLING_PERSONAL_INFO,
     error,
   };
 };
 
-export const Address = (error) => {
+export const errorAddress = (error) => {
   return {
     type: actionTypes.ERROR_HANDLING_ADDRESS,
     error,
   };
 };
 
-export const Measurments = (error) => {
+export const errorMeasurments = (error) => {
   return {
     type: actionTypes.ERROR_HANDLING_MEASURMENTS,
     error,
   };
 };
 
-export const Goals = (error) => {
+export const errorGoals = (error) => {
   return {
     type: actionTypes.ERROR_HANDLING_GOALS,
     error,
   };
 };
 
-export const Exercises = (error) => {
+export const errorExercises = (error) => {
   return {
     type: actionTypes.ERROR_HANDLING_EXERCISES,
     error,
   };
 };
 
-export const lifestyle = (error) => {
+export const errorLifestyle = (error) => {
   return {
     type: actionTypes.ERROR_HANDLING_LIFESTYLE,
     error,
   };
 };
 
-export const health = (error) => {
+export const errorHealth = (error) => {
   return {
     type: actionTypes.ERROR_HANDLING_HEALTH,
     error,

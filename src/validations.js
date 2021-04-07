@@ -1,6 +1,6 @@
 import { errorMessages } from "./constans/errorMessages";
 
-export const personalInfo = (state, stepForward, errorHandling) => {
+export const personalInfoValid = (state, stepForward, errorHandling) => {
   // Vytvorenie array zo statu
   const arrayOfStateValues = Object.values(state);
 
@@ -19,7 +19,7 @@ export const personalInfo = (state, stepForward, errorHandling) => {
   return errorHandling(errorMessages);
 };
 
-export const address = (state, stepForward, errorHandling) => {
+export const addressValid = (state, stepForward, errorHandling) => {
   const arrayOfStateValues = Object.values(state);
   const addressValidation = (value) => value.length >= 2;
   const address = arrayOfStateValues.every(addressValidation);
@@ -31,7 +31,7 @@ export const address = (state, stepForward, errorHandling) => {
   return errorHandling(errorMessages);
 };
 
-export const goals = (state, stepForward, errorHandling) => {
+export const goalsValid = (state, stepForward, errorHandling) => {
   //Overenie či je zaškrtnutý aspoň 1 cieľ
   const mainGoalsValues = Object.values(state.mainGoals);
   const mainGoalsValidation = (value) => value === true;
@@ -46,7 +46,7 @@ export const goals = (state, stepForward, errorHandling) => {
   return errorHandling(errorMessages);
 };
 
-export const exercises = (state, stepForward, errorHandling) => {
+export const exercisesValid = (state, stepForward, errorHandling) => {
   const { workoutRegularly, favouriteSports, trainingDuration, trainingFrequency } = state;
 
   if (workoutRegularly.length > 0 && favouriteSports.length > 0 && trainingDuration !== 0 && trainingFrequency !== 0) {
@@ -57,7 +57,7 @@ export const exercises = (state, stepForward, errorHandling) => {
   return errorHandling(errorMessages);
 };
 
-export const lifestyle = (state, stepForward, errorHandling) => {
+export const lifestyleValid = (state, stepForward, errorHandling) => {
   const {
     workType,
     movementActivity,
@@ -86,7 +86,7 @@ export const lifestyle = (state, stepForward, errorHandling) => {
   return errorHandling(errorMessages);
 };
 
-export const health = (state, stepForward, errorHandling) => {
+export const healthValid = (state, stepForward, errorHandling) => {
   const { medicine, problems, injuries } = state;
 
   if ((medicine.answer !== null && problems.answer !== null, injuries.answer !== null)) {
