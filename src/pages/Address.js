@@ -4,7 +4,7 @@ import Section from "../components/Section";
 import ErrorMessage from "../components/ErrorMessage";
 import { sectionNames } from "../constans/sectionNames";
 import { errorMessages } from "../constans/errorMessages";
-import { getInputAddress } from "../Actions/inputChange";
+import { getInputAddress } from "../actions/inputChange";
 import { connect } from "react-redux";
 
 function Address(props) {

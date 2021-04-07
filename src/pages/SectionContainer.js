@@ -16,7 +16,7 @@ import { TOTAL_STEPS } from "../constans/steps";
 import ButtonComponent from "../components/Button";
 
 import { connect } from "react-redux";
-import { stepForward, stepBack } from "../actions/buttonControl";
+import { stepForward, stepBack } from "../actions/button";
 import {
   errorPersonalInfo,
   errorAddress,
