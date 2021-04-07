@@ -10,12 +10,12 @@ const initialErrors = {
 
 const initialData = {
   mainGoals: {
-    healthImprove: false,
-    strengthIncrease: false,
-    performanceImprove: false,
-    muscleMassIncrease: false,
-    weightLoss: false,
-    weightGain: false,
+    Zlepšiť_zdravie: true,
+    Zvýšiť_silu: false,
+    Zlepšiť_Výkonnosť: false,
+    Zväčšiť_svalovú_hmotu: false,
+    Schudnúť: false,
+    Pribrať: true,
   },
   timeToAchieveGoals: "",
   priority: "",

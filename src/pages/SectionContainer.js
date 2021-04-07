@@ -69,7 +69,7 @@ function SectionContainer(props) {
 
     props.step === 9 && props.stepForward();
 
-    localStorage.clear();
+    // localStorage.clear();
   };
 
   // Sem switchujem kroky v aplikácií na základe čísla kroku sa mi vyrenderuje daný obsah, ktorý potrebujem

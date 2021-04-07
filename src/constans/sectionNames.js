@@ -5,6 +5,6 @@ export const sectionNames = {
   goals: "Ciele",
   lifeStyle: "Životný štýl",
   health: "Zdravotný stav",
-  additionalInfo: "Doplňujúce otázky",
+  additionalInfo: "Dodatočné informácie",
   exercises: "Pohybová aktivita",
 };

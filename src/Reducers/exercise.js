@@ -11,19 +11,19 @@ const initialErrors = {
 
 const initialData = {
   exerciseLevel: {
-    squatDumbell: null,
-    pullUps: null,
-    deadLift: null,
-    benchPress: null,
-    sideRaises: null,
-    bentOverRows: null,
+    squatDumbell: "Bez skúseností",
+    pullUps: "Bez skúseností",
+    deadLift: "Bez skúseností",
+    benchPress: "Bez skúseností",
+    sideRaises: "Bez skúseností",
+    bentOverRows: "Bez skúseností",
   },
 
-  workoutRegularly: "",
+  workoutRegularly: "Áno",
 
   exercises: {
-    Pondelok: { day: "Pondelok", type: "", duration: "" },
-    Utorok: { day: "Utorok", type: "", duration: "" },
+    Pondelok: { day: "Pondelok", type: "Posilňovanie", duration: "100 minút" },
+    Utorok: { day: "Utorok", type: "Voľno", duration: "" },
     Streda: { day: "Streda", type: "", duration: "" },
     Štvrtok: { day: "Štvrtok", type: "", duration: "" },
     Piatok: { day: "Piatok", type: "", duration: "" },

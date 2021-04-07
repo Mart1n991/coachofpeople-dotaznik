@@ -86,6 +86,7 @@ function Exercise(props) {
     "Futbal",
     "Plávanie",
     "Bicykel",
+    "Tenis",
     "Korčuľovanie",
     "Turistika",
     "Aerobic",

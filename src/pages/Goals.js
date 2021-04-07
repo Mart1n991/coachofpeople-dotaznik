@@ -13,6 +13,7 @@ import ErrorMessage from "../components/ErrorMessage";
 function Goals(props) {
   const classes = elementsStyles();
   const onMainGoalChecked = (event) => {
+    console.log(event.target.name);
     props.getInputGoals(event.target.name, event.target.checked);
   };
 
@@ -23,6 +24,8 @@ function Goals(props) {
   const onPriorityChange = (event) => {
     props.getGoalImportance(event.target.value);
   };
+
+  console.log(props.goals.mainGoals);
 
   const importantGoal = [
     "Okamžité dosiahnutie výsledku, ktorý je tažšie udržateľný",
@@ -37,7 +40,7 @@ function Goals(props) {
             control={
               <Checkbox
                 color="primary"
-                name="healthImprove"
+                name="Zlepšiť_zdravie"
                 checked={props.goals.mainGoals.healthImprove}
                 onChange={onMainGoalChecked}
               />
@@ -48,29 +51,29 @@ function Goals(props) {
             control={
               <Checkbox
                 color="primary"
-                name="strengthIncrease"
+                name="Zvýšiť_silu"
                 checked={props.goals.mainGoals.strengthIncrease}
                 onChange={onMainGoalChecked}
               />
             }
-            label="Zlepšiť výkonnosť"
+            label="Zvýšiť_silu"
           />
           <FormControlLabel
             control={
               <Checkbox
                 color="primary"
-                name="performanceImprove"
+                name="Zlepšiť_Výkonnosť"
                 checked={props.goals.mainGoals.performanceImprove}
                 onChange={onMainGoalChecked}
               />
             }
-            label="Zvýšiť silu"
+            label="Zlepšiť_Výkonnosť"
           />
           <FormControlLabel
             control={
               <Checkbox
                 color="primary"
-                name="muscleMassIncrease"
+                name="Zväčšiť_svalovú_hmotu"
                 checked={props.goals.mainGoals.muscleMassIncrease}
                 onChange={onMainGoalChecked}
               />
@@ -81,23 +84,23 @@ function Goals(props) {
             control={
               <Checkbox
                 color="primary"
-                name="weightLoss"
+                name="Schudnúť"
                 checked={props.goals.mainGoals.weightLoss}
                 onChange={onMainGoalChecked}
               />
             }
-            label="Zbaviť sa tuku"
+            label="Schudnúť"
           />
           <FormControlLabel
             control={
               <Checkbox
                 color="primary"
-                name="weightGain"
+                name="Pribrať"
                 checked={props.goals.mainGoals.weightGain}
                 onChange={onMainGoalChecked}
               />
             }
-            label="Pribrať na váhe"
+            label="Pribrať"
           />
         </FormGroup>
         {props.errors.mainGoals && <ErrorMessage>{props.errors.mainGoals}</ErrorMessage>}
