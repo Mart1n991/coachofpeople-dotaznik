@@ -25,7 +25,7 @@ import {
   errorExercises,
   errorLifestyle,
   errorHealth,
-} from "../Actions/errorHandling";
+} from "../Actions/errorHandle";
 import {
   personalInfoValid,
   addressValid,
