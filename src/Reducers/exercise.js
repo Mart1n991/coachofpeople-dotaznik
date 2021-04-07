@@ -1,6 +1,6 @@
-import actiontypes from "../Actions/actionTypes";
+import actiontypes from "../actions/actionTypes";
 import _set from "lodash/set";
-import actionTypes from "../Actions/actionTypes";
+import actionTypes from "../actions/actionTypes";
 
 const initialErrors = {
   workoutRegularly: "",
