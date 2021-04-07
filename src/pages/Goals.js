@@ -12,8 +12,8 @@ import ErrorMessage from "../components/ErrorMessage";
 
 function Goals(props) {
   const classes = elementsStyles();
+
   const onMainGoalChecked = (event) => {
-    console.log(event.target.name);
     props.getInputGoals(event.target.name, event.target.checked);
   };
 
@@ -24,8 +24,6 @@ function Goals(props) {
   const onPriorityChange = (event) => {
     props.getGoalImportance(event.target.value);
   };
-
-  console.log(props.goals.mainGoals);
 
   const importantGoal = [
     "Okamžité dosiahnutie výsledku, ktorý je tažšie udržateľný",
@@ -56,7 +54,7 @@ function Goals(props) {
                 onChange={onMainGoalChecked}
               />
             }
-            label="Zvýšiť_silu"
+            label="Zvýšiť silu"
           />
           <FormControlLabel
             control={
@@ -67,7 +65,7 @@ function Goals(props) {
                 onChange={onMainGoalChecked}
               />
             }
-            label="Zlepšiť_Výkonnosť"
+            label="Zlepšiť výkonnosť"
           />
           <FormControlLabel
             control={
