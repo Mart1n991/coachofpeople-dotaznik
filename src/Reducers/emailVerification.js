@@ -1,4 +1,4 @@
-import actionTypes from "../actions/actionTypes";
+import actionTypes from "../Actions/actionTypes";
 
 const initialState = {
   emailVerification: null, //Pôvodne null
