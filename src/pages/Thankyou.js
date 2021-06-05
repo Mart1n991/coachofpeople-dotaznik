@@ -8,7 +8,7 @@ function Thankyou(props) {
   return (
     <Section sectionName="Ďakujem" color="secondary">
       <div style={{ textAlign: "center" }}>
-        <p style={{ marginBottom: "50px" }}>Dotazník bol úspešne odoslaný :)</p>
+        <p style={{ marginBottom: "50px" }}>Dotazník bol úspešne odoslaný</p>
 
         <PDFDownloadLink
           document={<MyDocument data={props.user} />}

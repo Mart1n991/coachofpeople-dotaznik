@@ -32,10 +32,3 @@ export const emailVerification = (email) => {
     }
   };
 };
-
-export const recaptcha = (token) => {
-  return {
-    type: actionTypes.RECAPTCHA,
-    token,
-  };
-};

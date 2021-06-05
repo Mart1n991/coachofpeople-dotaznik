@@ -373,14 +373,16 @@ function MyDocument(props) {
                 </View>
               ))}
             </View>
-            <View>
-              <Text style={{ ...styles.text, textAlign: "center", marginTop: 20, fontWeight: "bold" }}>
-                Popis tréningu
-              </Text>
-              <Text style={{ ...styles.text, textAlign: "center" }}>
-                {props.data.exercise.data.trainingDescription}
-              </Text>
-            </View>
+            {props.data.exercise.data.trainingDescription !== "" ? (
+              <View>
+                <Text style={{ ...styles.text, textAlign: "center", marginTop: 20, fontWeight: "bold" }}>
+                  Popis tréningu
+                </Text>
+                <Text style={{ ...styles.text, textAlign: "center" }}>
+                  {props.data.exercise.data.trainingDescription}
+                </Text>
+              </View>
+            ) : null}
           </View>
         ) : null}
 

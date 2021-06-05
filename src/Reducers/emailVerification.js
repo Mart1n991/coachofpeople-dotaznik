@@ -1,7 +1,7 @@
 import actionTypes from "../Actions/actionTypes";
 
 const initialState = {
-  emailVerification: null, //Pôvodne null
+  emailVerification: null,
   isLoading: false,
   token: null,
   error: "",

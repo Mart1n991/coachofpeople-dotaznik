@@ -11,12 +11,12 @@ const initialErrors = {
 
 const initialData = {
   exerciseLevel: {
-    squatDumbell: "Bez skúseností",
-    pullUps: "Bez skúseností",
-    deadLift: "Bez skúseností",
-    benchPress: "Bez skúseností",
-    sideRaises: "Bez skúseností",
-    bentOverRows: "Bez skúseností",
+    squatDumbell: 0,
+    pullUps: 0,
+    deadLift: 0,
+    benchPress: 0,
+    sideRaises: 0,
+    bentOverRows: 0,
   },
 
   workoutRegularly: "",
@@ -33,8 +33,8 @@ const initialData = {
 
   trainingDescription: "",
   favouriteSports: [],
-  trainingFrequency: 0,
-  trainingDuration: 0,
+  trainingFrequency: "",
+  trainingDuration: "",
 };
 
 const initialState = {

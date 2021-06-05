@@ -139,7 +139,7 @@ function Exercise(props) {
               {questions.exercises.typeOfExercises}
             </Headings>
 
-            {/* Question Ktorý typo pohybovej aktivity bežne robíte */}
+            {/* Question Ktorý typ pohybovej aktivity bežne robíte */}
             {Object.values(props.exercise.exercises).map((exercise, index) => {
               return (
                 <Grid container alignItems="center" justify="center" key={index + uniqueKey} className={classes.day}>
@@ -227,31 +227,31 @@ function Exercise(props) {
           <Typography>Drep s činkou</Typography>
           <Grid item className={classes.root}>
             <Rating max={4} value={squatDumbell} name="squatDumbell" onChange={onExerciseLevelChange}></Rating>
-            <Box className={classes.box}>{squatDumbell !== null ? labels[squatDumbell] : "Bez skúseností"}</Box>
+            <Box className={classes.box}>{squatDumbell !== 0 ? labels[squatDumbell] : "Bez skúseností"}</Box>
           </Grid>
 
           <Typography>Zhyby</Typography>
           <Grid item className={classes.root}>
             <Rating max={4} value={pullUps} name="pullUps" onChange={onExerciseLevelChange}></Rating>
-            <Box className={classes.box}>{pullUps !== null ? labels[pullUps] : "Bez skúseností"}</Box>
+            <Box className={classes.box}>{pullUps !== 0 ? labels[pullUps] : "Bez skúseností"}</Box>
           </Grid>
 
           <Typography>Mŕtvy ťah</Typography>
           <Grid item className={classes.root}>
             <Rating max={4} value={deadLift} name="deadLift" onChange={onExerciseLevelChange}></Rating>
-            <Box className={classes.box}>{deadLift !== null ? labels[deadLift] : "Bez skúseností"}</Box>
+            <Box className={classes.box}>{deadLift !== 0 ? labels[deadLift] : "Bez skúseností"}</Box>
           </Grid>
 
           <Typography>Tlak s veľkou činkou</Typography>
           <Grid item className={classes.root}>
             <Rating max={4} value={benchPress} name="benchPress" onChange={onExerciseLevelChange}></Rating>
-            <Box className={classes.box}>{benchPress !== null ? labels[benchPress] : "Bez skúseností"}</Box>
+            <Box className={classes.box}>{benchPress !== 0 ? labels[benchPress] : "Bez skúseností"}</Box>
           </Grid>
 
           <Typography>Upažovanie v stoji</Typography>
           <Grid item className={classes.root}>
             <Rating max={4} value={sideRaises} name="sideRaises" onChange={onExerciseLevelChange}></Rating>
-            <Box className={classes.box}>{sideRaises !== null ? labels[sideRaises] : "Bez skúseností"}</Box>
+            <Box className={classes.box}>{sideRaises !== 0 ? labels[sideRaises] : "Bez skúseností"}</Box>
           </Grid>
 
           <Typography>Príťahy v predklone</Typography>
@@ -311,7 +311,7 @@ function Exercise(props) {
 
       <Grid item xs={12} align="center">
         <FormControl className={classes.day}>
-          <Select onChange={onTrainingFrequencyChange}>
+          <Select onChange={onTrainingFrequencyChange} value={props.exercise.trainingFrequency}>
             {trainingFrequency.map((frequency, index) => {
               return (
                 <MenuItem value={frequency} key={index + uniqueKey}>
@@ -330,7 +330,7 @@ function Exercise(props) {
 
       <Grid item xs={12} align="center">
         <FormControl className={classes.day}>
-          <Select onChange={onExerciseDurationChange}>
+          <Select onChange={onExerciseDurationChange} value={props.exercise.trainingDuration}>
             {trainingDuration.map((duration, index) => {
               return (
                 <MenuItem value={duration} key={index + uniqueKey}>
