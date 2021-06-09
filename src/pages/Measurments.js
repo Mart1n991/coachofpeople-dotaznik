@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Question from "../components/Question";
 import Section from "../components/Section";
@@ -11,6 +11,10 @@ import Grid from "@material-ui/core/Grid";
 import { getInputMeasurments } from "../Actions/inputChange";
 
 function Measurments(props) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const marksHeight = [
     { value: 50, label: "50cm" },
     { value: 100, label: "100cm" },

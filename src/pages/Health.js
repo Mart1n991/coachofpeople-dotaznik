@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Radio } from "@material-ui/core";
 import React from "react";
 import { connect } from "react-redux";
@@ -11,7 +12,35 @@ import AddList from "../components/AddList";
 import List from "../components/List";
 
 function Health(props) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const options = ["Áno", "Nie"];
+
+  const onProblemsAdd = () => {
+    if (props.data.problems.input.length < 3) {
+      window.alert("Zadajte zdravotný problém");
+      return;
+    }
+    props.problemsAdd(props.data.problems.input);
+  };
+
+  const onMedicineAdd = () => {
+    if (props.data.medicine.input.length < 3) {
+      window.alert("Zadajte liek");
+      return;
+    }
+    props.medicineAdd(props.data.medicine.input);
+  };
+
+  const onInjuriesAdd = () => {
+    if (props.data.injuries.input.length < 3) {
+      window.alert("Zadajte zranenie");
+      return;
+    }
+    props.injuriesAdd(props.data.injuries.input);
+  };
 
   return (
     <Section sectionName={sectionNames.health} color="secondary">
@@ -37,7 +66,7 @@ function Health(props) {
           label="Problém"
           value={props.data.problems.input}
           onChange={(e) => props.problemsInput(e.target.value)}
-          onClick={() => props.problemsAdd(props.data.problems.input)}
+          onClick={onProblemsAdd}
         />
       )}
 
@@ -68,7 +97,7 @@ function Health(props) {
           label="Liek"
           value={props.data.medicine.input}
           onChange={(e) => props.medicineInput(e.target.value)}
-          onClick={() => props.medicineAdd(props.data.medicine.input)}
+          onClick={onMedicineAdd}
         />
       )}
 
@@ -99,7 +128,7 @@ function Health(props) {
           label="Problém"
           value={props.data.injuries.input}
           onChange={(e) => props.injuriesInput(e.target.value)}
-          onClick={() => props.injuriesAdd(props.data.injuries.input)}
+          onClick={onInjuriesAdd}
         />
       )}
 

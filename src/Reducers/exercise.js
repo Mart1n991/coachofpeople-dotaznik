@@ -11,12 +11,12 @@ const initialErrors = {
 
 const initialData = {
   exerciseLevel: {
-    squatDumbell: 0,
-    pullUps: 0,
-    deadLift: 0,
-    benchPress: 0,
-    sideRaises: 0,
-    bentOverRows: 0,
+    squatDumbell: null,
+    pullUps: null,
+    deadLift: null,
+    benchPress: null,
+    sideRaises: null,
+    bentOverRows: null,
   },
 
   workoutRegularly: "",

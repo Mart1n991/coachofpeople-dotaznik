@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Radio, Grid, TextField } from "@material-ui/core";
 import React from "react";
 import Headings from "../components/Headings";
@@ -13,6 +14,10 @@ import AddList from "../components/AddList";
 import List from "../components/List";
 
 function LifeStyle(props) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const levelOfMovementInWork = ["Žiadna", "Mierna", "Vysoká"];
   const traveling = ["Veľmi málo", "Počas týždňa", "Niekoľkokrát do mesiaca", "Niekoľkokrát za rok"];
 
@@ -80,6 +85,30 @@ function LifeStyle(props) {
       return;
     }
     props.lifestyleAllergiesAdd(props.data.allergies.input);
+  };
+
+  const onSuplementsAdd = () => {
+    if (props.data.suplements.input.length < 3) {
+      window.alert("Zadajte doplnok výživy");
+      return;
+    }
+    props.lifestyleSuplementsAdd(props.data.suplements.input);
+  };
+
+  const onFavouriteFoodAdd = () => {
+    if (props.data.favouriteFood.input.length < 3) {
+      window.alert("Zadajte obľúbené jedlo");
+      return;
+    }
+    props.favouriteFoodAdd(props.data.favouriteFood.input);
+  };
+
+  const onUnPopularFoodAdd = () => {
+    if (props.data.unlikeFood.input.length < 3) {
+      window.alert("Zadajte neobľúbené jedlo");
+      return;
+    }
+    props.unlikeFoodAdd(props.data.unlikeFood.input);
   };
 
   const qualityChange = (e, newValue) => {
@@ -226,7 +255,7 @@ function LifeStyle(props) {
         <AddList
           question={questions.lifestyle.suplementsList}
           label="Doplnok výživy"
-          onClick={() => props.lifestyleSuplementsAdd(props.data.suplements.input)}
+          onClick={onSuplementsAdd}
           value={props.data.suplements.input}
           onChange={(e) => props.lifestyleSuplementsInput(e.target.value)}
         />
@@ -245,14 +274,14 @@ function LifeStyle(props) {
         <Grid item xs={12} align="center">
           <TextField
             variant="outlined"
-            label="Obľubené jedlo"
+            label="Napíšte jedlo a pridajte"
             type="text"
             value={props.data.favouriteFood.input}
             onChange={(e) => props.favouriteFoodInput(e.target.value)}
           />
         </Grid>
         <Grid item xs={12} align="center">
-          <Button color="secondary" onClick={() => props.favouriteFoodAdd(props.data.favouriteFood.input)}>
+          <Button color="secondary" onClick={onFavouriteFoodAdd}>
             Pridať
           </Button>
         </Grid>
@@ -271,14 +300,14 @@ function LifeStyle(props) {
         <Grid item xs={12} align="center">
           <TextField
             variant="outlined"
-            label="Jedlo, ktoré nemáte radi"
+            label="Napíšte jedlo a pridajte"
             type="text"
             value={props.data.unlikeFood.input}
             onChange={(e) => props.unlikeFoodInput(e.target.value)}
           />
         </Grid>
         <Grid item xs={12} align="center">
-          <Button color="secondary" onClick={() => props.unlikeFoodAdd(props.data.unlikeFood.input)}>
+          <Button color="secondary" onClick={onUnPopularFoodAdd}>
             Pridať
           </Button>
         </Grid>
@@ -289,9 +318,12 @@ function LifeStyle(props) {
           <List list={list} key={id} onClick={() => props.unlikeFoodRemove(list)} />
         ))}
 
+      <Headings variant="subtitle1" color="primary" align="center" mt={2} mb={2}>
+        {questions.lifestyle.qualities}
+      </Headings>
+
       <Question
         questionType="slider"
-        questionText={questions.lifestyle.qualities}
         marks={marksAppetite}
         min={1}
         max={5}

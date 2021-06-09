@@ -11,7 +11,7 @@ const initialData = {
   suplements: { answer: null, input: "", list: [] },
   favouriteFood: { input: "", list: [] },
   unlikeFood: { input: "", list: [] },
-  quality: { appetite: "žiadna", sleep: "Veľmi zlá", exhausted: "Veľmi silná", willToTrain: "Žiadna" },
+  quality: { appetite: 1, sleep: 1, exhausted: 1, willToTrain: 1 },
 };
 
 const initialErrors = {

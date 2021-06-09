@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Checkbox, FormControlLabel, FormGroup, FormControl, Grid, Radio, Select, MenuItem } from "@material-ui/core";
 import { elementsStyles } from "../styles/style";
@@ -11,6 +11,9 @@ import Headings from "../components/Headings";
 import ErrorMessage from "../components/ErrorMessage";
 
 function Goals(props) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const classes = elementsStyles();
 
   const onMainGoalChecked = (event) => {

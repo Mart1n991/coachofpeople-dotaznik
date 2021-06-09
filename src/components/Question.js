@@ -55,11 +55,14 @@ export default function Question({
   mt,
   mb,
   sliderName,
+  style,
+  fullwidth,
 }) {
   const useStyles = makeStyles({
     root: {
-      marginTop: "10px",
-      marginBottom: "10px",
+      // marginTop: "10px",
+      // marginBottom: "10px",
+      margin: "10px",
     },
 
     rating: {
@@ -77,7 +80,7 @@ export default function Question({
           <FormControl>
             <FormLabel required={required}>{label}</FormLabel>
 
-            <RadioGroup onChange={onChange} row={row} value={value} name={name}>
+            <RadioGroup onChange={onChange} row={row} value={value} name={name} style={style}>
               {arrayOfInputs.map((input, index) => {
                 return (
                   <FormControlLabel
@@ -145,6 +148,7 @@ export default function Question({
             min={min}
             max={max}
             name={name}
+            fullWidth={fullwidth}
           />
         );
     }

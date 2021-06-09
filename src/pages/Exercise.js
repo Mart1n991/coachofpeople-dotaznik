@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   Box,
   Grid,
@@ -31,6 +32,10 @@ import { sectionNames } from "../constans/sectionNames";
 import { uniqueKey } from "../utils/uniqueKey";
 
 function Exercise(props) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const options = ["Áno", "Nie"];
 
   const labels = {
@@ -212,7 +217,7 @@ function Exercise(props) {
   };
 
   const { squatDumbell, pullUps, deadLift, benchPress, sideRaises, bentOverRows } = props.exercise.exerciseLevel;
-
+  console.log(props.exercise.exerciseLevel);
   return (
     <Section sectionName={sectionNames.exercises} color="secondary">
       <Grid container justify="center">
@@ -227,31 +232,31 @@ function Exercise(props) {
           <Typography>Drep s činkou</Typography>
           <Grid item className={classes.root}>
             <Rating max={4} value={squatDumbell} name="squatDumbell" onChange={onExerciseLevelChange}></Rating>
-            <Box className={classes.box}>{squatDumbell !== 0 ? labels[squatDumbell] : "Bez skúseností"}</Box>
+            <Box className={classes.box}>{squatDumbell !== null ? labels[squatDumbell] : "Bez skúseností"}</Box>
           </Grid>
 
           <Typography>Zhyby</Typography>
           <Grid item className={classes.root}>
             <Rating max={4} value={pullUps} name="pullUps" onChange={onExerciseLevelChange}></Rating>
-            <Box className={classes.box}>{pullUps !== 0 ? labels[pullUps] : "Bez skúseností"}</Box>
+            <Box className={classes.box}>{pullUps !== null ? labels[pullUps] : "Bez skúseností"}</Box>
           </Grid>
 
           <Typography>Mŕtvy ťah</Typography>
           <Grid item className={classes.root}>
             <Rating max={4} value={deadLift} name="deadLift" onChange={onExerciseLevelChange}></Rating>
-            <Box className={classes.box}>{deadLift !== 0 ? labels[deadLift] : "Bez skúseností"}</Box>
+            <Box className={classes.box}>{deadLift !== null ? labels[deadLift] : "Bez skúseností"}</Box>
           </Grid>
 
           <Typography>Tlak s veľkou činkou</Typography>
           <Grid item className={classes.root}>
             <Rating max={4} value={benchPress} name="benchPress" onChange={onExerciseLevelChange}></Rating>
-            <Box className={classes.box}>{benchPress !== 0 ? labels[benchPress] : "Bez skúseností"}</Box>
+            <Box className={classes.box}>{benchPress !== null ? labels[benchPress] : "Bez skúseností"}</Box>
           </Grid>
 
           <Typography>Upažovanie v stoji</Typography>
           <Grid item className={classes.root}>
             <Rating max={4} value={sideRaises} name="sideRaises" onChange={onExerciseLevelChange}></Rating>
-            <Box className={classes.box}>{sideRaises !== 0 ? labels[sideRaises] : "Bez skúseností"}</Box>
+            <Box className={classes.box}>{sideRaises !== null ? labels[sideRaises] : "Bez skúseností"}</Box>
           </Grid>
 
           <Typography>Príťahy v predklone</Typography>

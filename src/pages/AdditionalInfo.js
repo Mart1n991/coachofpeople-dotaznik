@@ -20,6 +20,7 @@ function AdditionalInfo(props) {
         label="Požiadavky"
         value={props.data.requirements}
         onChange={(e) => props.requirementsInput(e.target.value)}
+        fullwidth
       />
 
       <Question
