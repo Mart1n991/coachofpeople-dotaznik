@@ -3,6 +3,7 @@ import Section from "../components/Section";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import MyDocument from "../pdfDocument/Document";
 import { connect } from "react-redux";
+import coachOfPeopleLogo from "../assets/trener-ludi.png";
 
 function Thankyou(props) {
   return (
@@ -26,6 +27,10 @@ function Thankyou(props) {
             return loading ? "Načítava sa dokument..." : "Stiahnuť pdf";
           }}
         </PDFDownloadLink>
+
+        <div style={{ marginTop: "50px" }}>
+          <img src={coachOfPeopleLogo} alt="Logo Tréner ľudí" className="thankyou-logo" />
+        </div>
       </div>
     </Section>
   );
